@@ -1,2 +1,5 @@
 node_modules
-git add .
+.next/
+.env
+.env.local
+.env*.local
