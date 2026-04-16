@@ -1,0 +1,169 @@
+.footer {
+  background: #000;
+  color: #fff;
+  font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+  font-size: 0.875rem;
+  line-height: 1.5;
+  border-top: 1px solid #2a2a2a;
+}
+
+.inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 5% 32px;
+}
+
+.rule {
+  border: none;
+  border-top: 1px solid #333;
+  margin: 0;
+}
+
+.partners {
+  padding: 28px 5% 36px;
+  text-align: center;
+}
+
+.partnersTitle {
+  margin: 0 0 28px;
+  font-size: clamp(1rem, 2.2vw, 1.25rem);
+  font-weight: 600;
+  color: #fafafa;
+  letter-spacing: 0.02em;
+}
+
+.partnerRow {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: clamp(24px, 5vw, 48px);
+}
+
+.partnerLogo {
+  display: block;
+  color: #fff;
+  font-weight: 700;
+  font-size: clamp(0.85rem, 1.5vw, 1rem);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  opacity: 0.92;
+  text-decoration: none;
+}
+
+.partnerLogo:hover {
+  opacity: 1;
+}
+
+.linkBand {
+  padding: 28px 5%;
+}
+
+.linkBandTitle {
+  margin: 0 0 14px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #e5e5e5;
+}
+
+.linkList {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px 0;
+  align-items: center;
+  color: #a3a3a3;
+}
+
+.linkList li {
+  display: inline-flex;
+  align-items: center;
+}
+
+.linkList li:not(:last-child)::after {
+  content: "•";
+  margin: 0 10px;
+  color: #525252;
+  font-size: 0.65rem;
+  vertical-align: middle;
+}
+
+.linkList a {
+  color: #d4d4d4;
+  text-decoration: none;
+}
+
+.linkList a:hover {
+  color: #fff;
+  text-decoration: underline;
+}
+
+.navGrid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 32px 24px;
+  padding: 40px 5% 36px;
+}
+
+@media (max-width: 900px) {
+  .navGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 520px) {
+  .navGrid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.navColTitle {
+  margin: 0 0 14px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #fafafa;
+}
+
+.navColList {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.navColList li {
+  margin-bottom: 10px;
+}
+
+.navColList a {
+  color: #a3a3a3;
+  text-decoration: none;
+}
+
+.navColList a:hover {
+  color: #fff;
+}
+
+.contactLine {
+  margin: 0 0 10px;
+  color: #a3a3a3;
+}
+
+.contactLine a {
+  color: #d4d4d4;
+  text-decoration: none;
+}
+
+.contactLine a:hover {
+  color: #fff;
+  text-decoration: underline;
+}
+
+.copy {
+  margin: 0;
+  padding: 24px 5% 40px;
+  text-align: center;
+  font-size: 0.8rem;
+  color: #737373;
+}
