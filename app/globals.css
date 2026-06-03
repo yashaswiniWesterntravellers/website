@@ -1,3 +1,55 @@
+@import "./styles/headings.css";
+
+:root {
+  /* Orange & gold */
+  --gold-light: #fde68a;
+  --gold: #fbbf24;
+  --gold-rich: #f59e0b;
+  --orange: #f97316;
+  --orange-deep: #ea580c;
+  --orange-dark: #c2410c;
+
+  /* Grey scale */
+  --grey-50: #f9fafb;
+  --grey-100: #f3f4f6;
+  --grey-200: #e5e7eb;
+  --grey-400: #9ca3af;
+  --grey-600: #4b5563;
+  --grey-700: #374151;
+  --grey-800: #1f2937;
+  --grey-900: #111827;
+  --grey-warm: #292524;
+
+  /* Semantic aliases (used across components) */
+  --accent-light: var(--gold-light);
+  --accent: var(--gold);
+  --accent-bright: var(--orange);
+  --accent-deep: var(--orange-deep);
+  --accent-dark: var(--orange-dark);
+  --bg-dark: var(--grey-900);
+  --bg-mid: var(--grey-800);
+  --bg-soft: var(--grey-700);
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  background: #ffffff;
+}
+
+body {
+  font-family: var(--font-sans), system-ui, sans-serif;
+  background: #ffffff;
+  color: var(--grey-800);
+}
+
 .whatsapp-btn {
   position: fixed;
   bottom: 28px;

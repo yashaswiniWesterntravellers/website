@@ -1,8 +1,23 @@
+import { Suspense } from "react";
+import { Great_Vibes, Montserrat } from "next/font/google";
 import "./globals.css";
 import "./mobile.css";
-import SiteFooter from "./components/SiteFooter";
-import TravelQuoteBar from "./components/TravelQuoteBar";
-import MobileBottomNav from "./components/MobileBottomNav";
+
+const montserrat = Montserrat({
+  subsets: ["latin"],
+  variable: "--font-sans",
+  display: "swap",
+});
+
+const greatVibes = Great_Vibes({
+  weight: "400",
+  subsets: ["latin"],
+  variable: "--font-script",
+  display: "swap",
+});
+import Footer from "./components/Footer/Footer";
+import TravelQuoteBar from "./components/TravelQuoteBar/TravelQuoteBar";
+import MobileBottomNav from "./components/MobileBottomNav/MobileBottomNav";
 
 export const metadata = {
   title: "Western Travellers",
@@ -11,12 +26,14 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en">
-      <body>
+    <html lang="en" className={`${montserrat.variable} ${greatVibes.variable}`}>
+      <body className={montserrat.className}>
         {children}
         <TravelQuoteBar />
-        <SiteFooter />
-        <MobileBottomNav />
+        <Footer />
+        <Suspense fallback={null}>
+          <MobileBottomNav />
+        </Suspense>
         <a
           href="https://wa.me/918050041118"
           target="_blank"

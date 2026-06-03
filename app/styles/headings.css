@@ -1,0 +1,180 @@
+/* Western Travellers — shared heading gradients & motion */
+
+:root {
+  --wt-gradient-fire: linear-gradient(
+    105deg,
+    #f97316 0%,
+    #fb923c 28%,
+    #ef4444 62%,
+    #dc2626 100%
+  );
+  --wt-gradient-sunset: linear-gradient(
+    105deg,
+    #dc2626 0%,
+    #f97316 35%,
+    #fbbf24 68%,
+    #ea580c 100%
+  );
+  --wt-gradient-gold: linear-gradient(
+    105deg,
+    #fbbf24 0%,
+    #f97316 45%,
+    #ea580c 85%,
+    #c2410c 100%
+  );
+  --wt-gradient-shine: linear-gradient(
+    90deg,
+    #ea580c 0%,
+    #f97316 25%,
+    #fbbf24 50%,
+    #f97316 75%,
+    #ef4444 100%
+  );
+}
+
+/* Base italic heading */
+.wt-heading {
+  font-family: Georgia, "Times New Roman", serif;
+  font-style: italic;
+  font-weight: 700;
+  line-height: 1.12;
+  letter-spacing: -0.02em;
+}
+
+.wt-heading-xl {
+  font-size: clamp(2.25rem, 5.5vw, 3.75rem);
+}
+
+.wt-heading-lg {
+  font-size: clamp(1.65rem, 3.5vw, 2.35rem);
+}
+
+.wt-heading-md {
+  font-size: clamp(1.25rem, 2.5vw, 1.65rem);
+}
+
+.wt-heading-sm {
+  font-size: clamp(1rem, 2vw, 1.25rem);
+}
+
+/* Gradient text fills */
+.wt-gradient-fire,
+.wt-gradient-sunset,
+.wt-gradient-gold {
+  display: inline-block;
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  filter: drop-shadow(0 2px 10px rgba(249, 115, 22, 0.25));
+}
+
+.wt-gradient-fire {
+  background-image: var(--wt-gradient-fire);
+}
+
+.wt-gradient-sunset {
+  background-image: var(--wt-gradient-sunset);
+}
+
+.wt-gradient-gold {
+  background-image: var(--wt-gradient-gold);
+}
+
+/* Animated shimmer on gradient text */
+.wt-gradient-shimmer {
+  background-image: var(--wt-gradient-shine);
+  background-size: 200% auto;
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  animation: wtTextShimmer 4s ease-in-out infinite;
+}
+
+@keyframes wtTextShimmer {
+  0%,
+  100% {
+    background-position: 0% center;
+  }
+  50% {
+    background-position: 100% center;
+  }
+}
+
+/* Glowing underline */
+.wt-shine-line {
+  position: relative;
+  display: block;
+  height: 4px;
+  border-radius: 999px;
+  overflow: hidden;
+  background: var(--wt-gradient-shine);
+  box-shadow: 0 0 14px rgba(251, 191, 36, 0.45);
+}
+
+.wt-shine-line::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.55) 45%,
+    rgba(251, 191, 36, 0.95) 50%,
+    rgba(255, 255, 255, 0.55) 55%,
+    transparent 100%
+  );
+  animation: wtLineShine 2.4s ease-in-out infinite;
+}
+
+@keyframes wtLineShine {
+  0% {
+    transform: translateX(-120%);
+  }
+  100% {
+    transform: translateX(120%);
+  }
+}
+
+/* Entrance animations */
+.wt-fade-up {
+  animation: wtFadeUp 0.85s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.wt-fade-up-delay {
+  animation: wtFadeUp 0.85s cubic-bezier(0.22, 1, 0.36, 1) 0.15s both;
+}
+
+@keyframes wtFadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(22px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.wt-float {
+  animation: wtFloat 3.5s ease-in-out infinite;
+}
+
+@keyframes wtFloat {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-6px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .wt-gradient-shimmer,
+  .wt-shine-line::after,
+  .wt-fade-up,
+  .wt-fade-up-delay,
+  .wt-float {
+    animation: none;
+  }
+}

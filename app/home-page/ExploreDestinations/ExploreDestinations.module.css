@@ -1,0 +1,48 @@
+.section {
+  background: #ffffff;
+  color: #0f172a;
+  scroll-margin-top: 12px;
+}
+
+.breadcrumb {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 12px 5% 0;
+  font-size: 0.9rem;
+  color: #64748b;
+}
+
+.breadcrumb a {
+  color: #ea580c;
+  text-decoration: none;
+}
+
+.breadcrumb a:hover {
+  text-decoration: underline;
+}
+
+.pageHeader {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 10px 5% 4px;
+}
+
+.pageHeader h1 {
+  margin: 0 0 6px;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(1.85rem, 4.5vw, 2.65rem);
+  font-weight: 700;
+  font-style: italic;
+  letter-spacing: -0.02em;
+  background: var(--wt-gradient-fire);
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  animation: wtFadeUp 0.8s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.pageHeader p {
+  margin: 0;
+  color: #64748b;
+  font-size: 1rem;
+}
