@@ -164,6 +164,27 @@
   opacity: 1;
 }
 
+.cardStatic {
+  cursor: default;
+  pointer-events: none;
+}
+
+.cardStatic:hover {
+  transform: none;
+  border-color: rgba(249, 115, 22, 0.12);
+  box-shadow:
+    0 8px 32px rgba(15, 23, 42, 0.06),
+    0 2px 0 rgba(255, 255, 255, 0.95) inset;
+}
+
+.cardStatic:hover::before {
+  opacity: 0;
+}
+
+.cardStatic:hover .cardIcon {
+  transform: none;
+}
+
 .cardSelected {
   border-color: var(--orange);
   background: #ffffff;

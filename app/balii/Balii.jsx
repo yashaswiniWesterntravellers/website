@@ -235,7 +235,7 @@ function PackageCard({ pkg, onViewMore }) {
   );
 }
 
-function CategorySection({ category, onViewMore, onChangeStyle }) {
+function CategorySection({ category, onViewMore }) {
   return (
     <section className={styles.categorySection} id={category.id} aria-labelledby={`${category.id}-heading`}>
       <div className={styles.categoryHero}>
@@ -258,11 +258,6 @@ function CategorySection({ category, onViewMore, onChangeStyle }) {
       <div className={styles.categoryBar}>
         <div className={styles.categoryBarInner}>
           <p>{category.title}</p>
-          {onChangeStyle ? (
-            <button type="button" className={styles.changeStyleBtn} onClick={onChangeStyle}>
-              ← Change trip style
-            </button>
-          ) : null}
         </div>
       </div>
 
@@ -331,23 +326,12 @@ function BaliIntro({ onExplore }) {
 
 export default function Balii() {
   const [showStylePicker, setShowStylePicker] = useState(false);
-  const [activeCategory, setActiveCategory] = useState(null);
 
   const openStylePicker = useCallback(() => {
     setShowStylePicker(true);
-    setActiveCategory(null);
     window.scrollTo({ top: 0, behavior: "smooth" });
     if (typeof window !== "undefined") {
       window.history.replaceState(null, "", `${window.location.pathname}#${TRIP_STYLES_HASH}`);
-    }
-  }, []);
-
-  const selectCategory = useCallback((styleId) => {
-    setActiveCategory(styleId);
-    setShowStylePicker(false);
-    window.scrollTo({ top: 0, behavior: "smooth" });
-    if (typeof window !== "undefined") {
-      window.history.replaceState(null, "", `${window.location.pathname}#${styleId}`);
     }
   }, []);
 
@@ -355,16 +339,8 @@ export default function Balii() {
     if (typeof window === "undefined") return;
 
     const openFromHash = () => {
-      const hash = window.location.hash.replace("#", "");
-      if (hash === TRIP_STYLES_HASH) {
+      if (window.location.hash === `#${TRIP_STYLES_HASH}`) {
         setShowStylePicker(true);
-        setActiveCategory(null);
-        return;
-      }
-      const matched = BALI_CATEGORIES.find((c) => c.id === hash);
-      if (matched) {
-        setShowStylePicker(false);
-        setActiveCategory(matched.id);
       }
     };
 
@@ -372,10 +348,6 @@ export default function Balii() {
     window.addEventListener("hashchange", openFromHash);
     return () => window.removeEventListener("hashchange", openFromHash);
   }, []);
-
-  const categoriesToShow = activeCategory
-    ? BALI_CATEGORIES.filter((c) => c.id === activeCategory)
-    : BALI_CATEGORIES;
 
   return (
     <div className={styles.page}>
@@ -385,17 +357,8 @@ export default function Balii() {
         <TripStylePicker
           location={LOCATION}
           sectionId={TRIP_STYLES_HASH}
-          onSelect={selectCategory}
+          interactive={false}
         />
-      ) : activeCategory ? (
-        categoriesToShow.map((category) => (
-          <CategorySection
-            key={category.id}
-            category={category}
-            onViewMore={openStylePicker}
-            onChangeStyle={openStylePicker}
-          />
-        ))
       ) : (
         <>
           <PageHero />

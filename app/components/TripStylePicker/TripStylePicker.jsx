@@ -34,11 +34,13 @@ export default function TripStylePicker({
   description,
   selectedStyle: controlledSelected,
   onSelect,
+  /** When false, cards are display-only (no click, highlight, or navigation). */
+  interactive = true,
   className,
 }) {
   const [internalSelected, setInternalSelected] = useState(null);
   const isControlled = controlledSelected !== undefined;
-  const selectedStyle = isControlled ? controlledSelected : internalSelected;
+  const selectedStyle = interactive && isControlled ? controlledSelected : interactive ? internalSelected : null;
 
   const resolvedSectionId = sectionId ?? tripStyleSectionId(location);
   const headingId = `${resolvedSectionId}-heading`;
@@ -46,6 +48,7 @@ export default function TripStylePicker({
   const resolvedDescription = description ?? tripStyleDescription(location);
 
   const handleSelect = (styleId) => {
+    if (!interactive) return;
     if (!isControlled) {
       setInternalSelected(styleId);
     }
@@ -70,19 +73,19 @@ export default function TripStylePicker({
           <span className={styles.divider} aria-hidden="true" />
         </header>
 
-        <div className={styles.grid}>
+        <div className={styles.grid} role="list">
           {tripStyles.map((item, index) => {
-            const isSelected = selectedStyle === item.id;
-            return (
-              <button
-                key={item.id}
-                type="button"
-                data-style={item.id}
-                className={`${styles.card} ${isSelected ? styles.cardSelected : ""}`}
-                style={{ animationDelay: `${index * 0.07}s` }}
-                onClick={() => handleSelect(item.id)}
-                aria-pressed={isSelected}
-              >
+            const isSelected = interactive && selectedStyle === item.id;
+            const cardClass = [
+              styles.card,
+              !interactive && styles.cardStatic,
+              isSelected && styles.cardSelected,
+            ]
+              .filter(Boolean)
+              .join(" ");
+
+            const cardContent = (
+              <>
                 {isSelected ? (
                   <span className={styles.cardCheck} aria-hidden="true">
                     ✓
@@ -93,6 +96,34 @@ export default function TripStylePicker({
                 </span>
                 <span className={styles.cardLabel}>{item.label}</span>
                 <span className={styles.cardHint}>{item.hint}</span>
+              </>
+            );
+
+            if (!interactive) {
+              return (
+                <div
+                  key={item.id}
+                  role="listitem"
+                  data-style={item.id}
+                  className={cardClass}
+                  style={{ animationDelay: `${index * 0.07}s` }}
+                >
+                  {cardContent}
+                </div>
+              );
+            }
+
+            return (
+              <button
+                key={item.id}
+                type="button"
+                data-style={item.id}
+                className={cardClass}
+                style={{ animationDelay: `${index * 0.07}s` }}
+                onClick={() => handleSelect(item.id)}
+                aria-pressed={isSelected}
+              >
+                {cardContent}
               </button>
             );
           })}
