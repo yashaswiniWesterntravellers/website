@@ -821,40 +821,43 @@
   }
 }
 
-/* Mobile home hero — shorter image + quote band visible on load */
+/* Mobile home hero — image zone matches Bali page hero (42svh / 300px / 240px min) */
 @media (max-width: 767px) {
   .container {
-    --hero-mobile-image-h: min(50svh, 400px);
+    --hero-mobile-image-h: min(42svh, 300px);
+    --hero-mobile-image-zone: max(var(--hero-mobile-image-h), 240px);
     --hero-mobile-quote-h: 48px;
-    height: calc(var(--hero-mobile-image-h) + var(--hero-mobile-quote-h));
+    height: calc(var(--hero-mobile-image-zone) + var(--hero-mobile-quote-h));
     min-height: unset;
     max-height: none;
     background: #0f172a;
-    border-radius: 0;
+    border-radius: 0 0 20px 20px;
     box-shadow: none;
     overflow: hidden;
   }
 
   .heroBg {
     top: 0;
-    left: 0;
-    right: 0;
+    left: -14px;
+    right: auto;
     bottom: auto;
-    width: 100%;
-    height: var(--hero-mobile-image-h);
+    width: calc(100% + 28px) !important;
+    height: var(--hero-mobile-image-zone) !important;
+    min-height: 240px;
     animation: none;
-    transform: scale(1.05);
-    object-position: center 40%;
+    transform: scale(1.04);
+    object-position: center 38%;
   }
 
   .overlay,
   .ambientGlow {
     top: 0;
-    left: 0;
-    right: 0;
+    left: -14px;
+    right: auto;
     bottom: auto;
-    width: 100%;
-    height: var(--hero-mobile-image-h);
+    width: calc(100% + 28px);
+    height: var(--hero-mobile-image-zone);
+    min-height: 240px;
   }
 
   .glowOrb1 {
@@ -879,9 +882,9 @@
     z-index: 3;
     flex: none;
     width: 100%;
-    height: var(--hero-mobile-image-h);
-    min-height: var(--hero-mobile-image-h);
-    max-height: var(--hero-mobile-image-h);
+    height: var(--hero-mobile-image-zone);
+    min-height: var(--hero-mobile-image-zone);
+    max-height: var(--hero-mobile-image-zone);
     padding: calc(52px + env(safe-area-inset-top, 0px)) 12px 10px;
     align-items: center;
     justify-content: center;
@@ -1042,12 +1045,8 @@
   }
 }
 
-/* Short phones: keep stats visible, tuck chips into slimmer row */
+/* Short phones: same image zone as Bali; tighten chips only */
 @media (max-width: 767px) and (max-height: 740px) {
-  .container {
-    --hero-mobile-image-h: min(48svh, 360px);
-  }
-
   .heroChips {
     padding: 0;
   }
@@ -1061,10 +1060,6 @@
 @media (max-width: 767px) and (max-height: 640px) {
   .heroChips {
     display: none;
-  }
-
-  .container {
-    --hero-mobile-image-h: min(44svh, 320px);
   }
 }
 
