@@ -357,7 +357,7 @@
     display: block;
     position: fixed;
     inset: 0;
-    z-index: 1000;
+    z-index: 10050;
     padding: 88px 24px 40px;
     background: linear-gradient(
       180deg,

@@ -821,37 +821,31 @@
   }
 }
 
-/* Mobile home hero (max-width: 767px) */
+/* Mobile home hero (max-width: 767px) — full-screen background image */
 @media (max-width: 767px) {
   .container {
-    height: auto;
-    min-height: 0;
+    height: 100svh;
+    min-height: 100svh;
     max-height: none;
     background: #0f172a;
-    border-radius: 0 0 28px 28px;
-    box-shadow: 0 16px 48px rgba(15, 23, 42, 0.15);
+    border-radius: 0;
+    box-shadow: none;
   }
 
   .heroBg {
-    inset: auto;
-    top: 0;
-    left: 0;
-    right: 0;
+    inset: 0;
     width: 100%;
-    height: min(48svh, 360px);
+    height: 100%;
     animation: none;
     transform: scale(1.05);
-    object-position: center 35%;
+    object-position: center center;
   }
 
   .overlay,
   .ambientGlow {
-    inset: auto;
-    top: 0;
-    left: 0;
-    right: 0;
+    inset: 0;
     width: 100%;
-    height: min(48svh, 360px);
+    height: 100%;
   }
 
   .glowOrb1 {
@@ -868,7 +862,9 @@
   }
 
   .heroLayout {
-    padding: 56px 12px 64px;
+    flex: 1;
+    min-height: 0;
+    padding: 56px 12px 72px;
     align-items: center;
     justify-content: center;
     gap: 8px;

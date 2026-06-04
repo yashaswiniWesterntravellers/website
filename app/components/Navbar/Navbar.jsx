@@ -1,8 +1,8 @@
 "use client";
 
-import { useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import Link from "next/link";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import {
   DOMESTIC_PACKAGE_LINKS,
   INTERNATIONAL_PACKAGE_LINKS,
@@ -15,9 +15,16 @@ const MAIN_LINKS = [
   { label: "Contact", href: "/contact" },
 ];
 
+const MENU_SECTION_IDS = {
+  domestic: "menu-domestic-packages",
+  international: "menu-international-packages",
+};
+
 export default function Navbar({ variant = "default" }) {
   const pathname = usePathname();
+  const router = useRouter();
   const [menuOpen, setMenuOpen] = useState(false);
+  const menuRef = useRef(null);
 
   const navClass = [
     styles.navbar,
@@ -33,7 +40,59 @@ export default function Navbar({ variant = "default" }) {
     return pathname === href;
   };
 
-  const closeMenu = () => setMenuOpen(false);
+  const scrollToMenuSection = useCallback((section) => {
+    const id = MENU_SECTION_IDS[section];
+    if (!id || !menuRef.current) return;
+    requestAnimationFrame(() => {
+      const el = menuRef.current.querySelector(`#${id}`);
+      el?.scrollIntoView({ behavior: "smooth", block: "start" });
+    });
+  }, []);
+
+  const openMenu = useCallback(
+    (section) => {
+      setMenuOpen(true);
+      if (section) scrollToMenuSection(section);
+    },
+    [scrollToMenuSection]
+  );
+
+  const closeMenu = useCallback(() => {
+    setMenuOpen(false);
+    if (typeof window !== "undefined" && pathname === "/" && window.location.search.includes("menu=")) {
+      router.replace("/", { scroll: false });
+    }
+  }, [pathname, router]);
+
+  useEffect(() => {
+    const onOpen = (e) => {
+      const section = e.detail?.section;
+      if (section === "domestic" || section === "international") {
+        openMenu(section);
+      } else {
+        setMenuOpen(true);
+      }
+    };
+    window.addEventListener("wt-open-nav-menu", onOpen);
+    return () => window.removeEventListener("wt-open-nav-menu", onOpen);
+  }, [openMenu]);
+
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+    const menu = new URLSearchParams(window.location.search).get("menu");
+    if (menu === "domestic" || menu === "international") {
+      openMenu(menu);
+    }
+  }, [pathname, openMenu]);
+
+  useEffect(() => {
+    if (!menuOpen) return undefined;
+    const prev = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    return () => {
+      document.body.style.overflow = prev;
+    };
+  }, [menuOpen]);
 
   return (
     <nav className={navClass}>
@@ -96,7 +155,7 @@ export default function Navbar({ variant = "default" }) {
         <button
           type="button"
           className={styles.hamburger}
-          onClick={() => setMenuOpen(!menuOpen)}
+          onClick={() => (menuOpen ? closeMenu() : openMenu())}
           aria-label="Toggle menu"
           aria-expanded={menuOpen}
         >
@@ -106,8 +165,8 @@ export default function Navbar({ variant = "default" }) {
         </button>
       </div>
 
-      {menuOpen && (
-        <div className={styles.mobileMenu}>
+      {menuOpen ? (
+        <div className={styles.mobileMenu} ref={menuRef}>
           {MAIN_LINKS.map((link) => (
             <Link
               key={link.href}
@@ -118,7 +177,9 @@ export default function Navbar({ variant = "default" }) {
               {link.label}
             </Link>
           ))}
-          <p className={styles.mobileNavGroupLabel}>International Packages</p>
+          <p id={MENU_SECTION_IDS.international} className={styles.mobileNavGroupLabel}>
+            International Packages
+          </p>
           {INTERNATIONAL_PACKAGE_LINKS.map((item) => (
             <Link
               key={item.label}
@@ -129,7 +190,9 @@ export default function Navbar({ variant = "default" }) {
               {item.label}
             </Link>
           ))}
-          <p className={styles.mobileNavGroupLabel}>Domestic Packages</p>
+          <p id={MENU_SECTION_IDS.domestic} className={styles.mobileNavGroupLabel}>
+            Domestic Packages
+          </p>
           {DOMESTIC_PACKAGE_LINKS.map((item) => (
             <Link
               key={item.label}
@@ -148,7 +211,7 @@ export default function Navbar({ variant = "default" }) {
             Login
           </button>
         </div>
-      )}
+      ) : null}
     </nav>
   );
 }

@@ -79,7 +79,8 @@
 }
 
 .mobileBottomNav a,
-.mobileBottomNav button {
+.mobileBottomNav button,
+.mobileBottomNav .mobileNavTab {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -107,25 +108,20 @@
 }
 
 .mobileBottomNav a:active,
-.mobileBottomNav button:active {
+.mobileBottomNav button:active,
+.mobileBottomNav .mobileNavTab:active {
   transform: scale(0.9);
   background: rgba(249, 115, 22, 0.1);
 }
 
-.mobileBottomNav .navTabButton.navActive {
+.mobileBottomNav a.navActive,
+.mobileBottomNav .mobileNavTab.navActive {
   color: var(--orange-deep);
   background: rgba(249, 115, 22, 0.1);
 }
 
-.mobileBottomNav .navTabButton.navActive svg {
-  stroke: var(--orange-deep);
-}
-
-.mobileBottomNav a.navActive {
-  color: var(--orange-deep);
-}
-
-.mobileBottomNav a.navActive svg {
+.mobileBottomNav a.navActive svg,
+.mobileBottomNav .mobileNavTab.navActive svg {
   stroke: var(--orange-deep);
 }
 
