@@ -821,53 +821,71 @@
   }
 }
 
-/* Mobile home hero (max-width: 767px) — full-screen background image */
+/* Mobile home hero — shorter image + quote band visible on load */
 @media (max-width: 767px) {
   .container {
-    height: 88svh;
-    min-height: 88svh;
+    --hero-mobile-image-h: min(50svh, 400px);
+    --hero-mobile-quote-h: 48px;
+    height: calc(var(--hero-mobile-image-h) + var(--hero-mobile-quote-h));
+    min-height: unset;
     max-height: none;
     background: #0f172a;
     border-radius: 0;
     box-shadow: none;
+    overflow: hidden;
   }
 
   .heroBg {
-    inset: 0;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: auto;
     width: 100%;
-    height: 100%;
+    height: var(--hero-mobile-image-h);
     animation: none;
     transform: scale(1.05);
-    object-position: center center;
+    object-position: center 40%;
   }
 
   .overlay,
   .ambientGlow {
-    inset: 0;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: auto;
     width: 100%;
-    height: 100%;
+    height: var(--hero-mobile-image-h);
   }
 
   .glowOrb1 {
-    width: 180px;
-    height: 180px;
-    top: 8%;
+    width: 140px;
+    height: 140px;
+    top: 6%;
     left: -5%;
   }
 
   .glowOrb2 {
-    width: 140px;
-    height: 140px;
+    width: 110px;
+    height: 110px;
     right: -8%;
   }
 
+  .glowOrb3 {
+    display: none;
+  }
+
   .heroLayout {
-    flex: 1;
-    min-height: 0;
-    padding: max(56px, calc(12px + env(safe-area-inset-top, 0px))) 16px 16px;
+    position: relative;
+    z-index: 3;
+    flex: none;
+    width: 100%;
+    height: var(--hero-mobile-image-h);
+    min-height: var(--hero-mobile-image-h);
+    max-height: var(--hero-mobile-image-h);
+    padding: calc(52px + env(safe-area-inset-top, 0px)) 12px 10px;
     align-items: center;
-    justify-content: space-evenly;
-    gap: 0;
+    justify-content: center;
+    overflow: visible;
   }
 
   .collageLeft,
@@ -878,40 +896,42 @@
   .heroContent {
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: stretch;
     justify-content: center;
     width: 100%;
     max-width: 100%;
-    padding: 0 12px;
-    gap: clamp(12px, 2.5vh, 18px);
+    padding: 0 4px;
+    gap: 10px;
+    overflow: visible;
   }
 
   .heroEyebrow {
     font-size: 0.65rem;
     padding: 6px 12px;
-    margin-bottom: 12px;
+    margin-bottom: 0;
   }
 
   .heroTitle {
-    font-size: clamp(1.85rem, 8vw, 2.35rem);
+    font-size: clamp(1.55rem, 7vw, 2rem);
     white-space: normal;
-    line-height: 1.1;
+    line-height: 1.12;
     margin: 0;
     text-align: center;
   }
 
   .heroSubtitle {
-    font-size: 0.92rem;
-    margin-bottom: 16px;
+    font-size: 0.88rem;
+    margin-bottom: 0;
     padding: 0;
   }
 
   .searchForm {
     width: 100%;
     max-width: 100%;
-    height: 54px;
+    height: 50px;
     margin: 0;
-    padding: 0 5px 0 16px;
+    padding: 0 4px 0 14px;
+    flex-shrink: 0;
   }
 
   .searchInput {
@@ -919,8 +939,10 @@
   }
 
   .searchBtn {
+    width: 42px;
     height: 42px;
-    padding: 0 14px;
+    padding: 0;
+    flex-shrink: 0;
   }
 
   .searchBtnText {
@@ -928,16 +950,19 @@
   }
 
   .heroChips {
+    display: flex;
     flex-wrap: nowrap;
-    justify-content: center;
+    justify-content: flex-start;
+    gap: 8px;
     overflow-x: auto;
     margin: 0;
-    padding: 4px 0 8px;
+    padding: 2px 0 4px;
     width: 100%;
     scrollbar-width: none;
     -webkit-overflow-scrolling: touch;
-    mask-image: linear-gradient(90deg, transparent, #000 4%, #000 96%, transparent);
-    -webkit-mask-image: linear-gradient(90deg, transparent, #000 4%, #000 96%, transparent);
+    mask-image: none;
+    -webkit-mask-image: none;
+    flex-shrink: 0;
   }
 
   .heroChips::-webkit-scrollbar {
@@ -946,43 +971,57 @@
 
   .heroChip {
     flex-shrink: 0;
-    padding: 10px 16px;
-    font-size: 0.82rem;
+    padding: 8px 12px;
+    font-size: 0.75rem;
   }
 
   .heroStats {
     display: flex;
     width: 100%;
-    gap: 8px;
+    gap: 6px;
     margin: 0;
     padding: 0;
+    flex-shrink: 0;
   }
 
   .heroStats li {
     flex: 1 1 0;
     min-width: 0;
-    padding: 10px 6px;
-    border-radius: 12px;
-    background: rgba(255, 255, 255, 0.1);
-    border: 1px solid rgba(255, 255, 255, 0.16);
+    padding: 8px 4px;
+    border-radius: 10px;
+    background: rgba(255, 255, 255, 0.12);
+    border: 1px solid rgba(255, 255, 255, 0.18);
     text-align: center;
   }
 
   .heroStats strong {
-    font-size: 1rem;
+    display: block;
+    font-size: 0.95rem;
+    line-height: 1.2;
   }
 
   .heroStats span {
-    font-size: 0.6rem;
-    line-height: 1.2;
+    display: block;
+    font-size: 0.55rem;
+    line-height: 1.15;
+    letter-spacing: 0.04em;
+    word-break: break-word;
   }
 
   .quoteBorder {
     position: relative;
+    z-index: 5;
     flex-shrink: 0;
     width: 100%;
-    padding: 12px 0;
+    height: var(--hero-mobile-quote-h);
+    min-height: var(--hero-mobile-quote-h);
+    padding: 10px 0;
     border-radius: 0;
+    box-sizing: border-box;
+  }
+
+  .quoteMarqueeChunk {
+    font-size: 0.78rem;
   }
 
   .quoteStatic {
@@ -1000,6 +1039,32 @@
 
   .videoControls {
     display: none;
+  }
+}
+
+/* Short phones: keep stats visible, tuck chips into slimmer row */
+@media (max-width: 767px) and (max-height: 740px) {
+  .container {
+    --hero-mobile-image-h: min(48svh, 360px);
+  }
+
+  .heroChips {
+    padding: 0;
+  }
+
+  .heroChip {
+    padding: 6px 10px;
+    font-size: 0.7rem;
+  }
+}
+
+@media (max-width: 767px) and (max-height: 640px) {
+  .heroChips {
+    display: none;
+  }
+
+  .container {
+    --hero-mobile-image-h: min(44svh, 320px);
   }
 }
 
