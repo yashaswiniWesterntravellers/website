@@ -1,0 +1,199 @@
+.packageMenuBackdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 10000;
+  background: rgba(15, 23, 42, 0.55);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  animation: menuFadeIn 0.25s ease;
+}
+
+.packageMenuSheet {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 10001;
+  max-height: min(72vh, 520px);
+  padding: 0 0 calc(var(--wt-mobile-nav-h) + var(--wt-safe-bottom) + 8px);
+  background: #ffffff;
+  border-radius: 20px 20px 0 0;
+  box-shadow: 0 -12px 40px rgba(15, 23, 42, 0.18);
+  display: flex;
+  flex-direction: column;
+  animation: menuSlideUp 0.32s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.packageMenuHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 16px 18px 12px;
+  border-bottom: 1px solid rgba(15, 23, 42, 0.08);
+  flex-shrink: 0;
+}
+
+.packageMenuTitle {
+  margin: 0;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 1.15rem;
+  font-weight: 700;
+  font-style: italic;
+  background: var(--wt-gradient-sunset, linear-gradient(135deg, #ea580c, #fbbf24));
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+}
+
+.packageMenuClose {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border: none;
+  border-radius: 12px;
+  background: #f1f5f9;
+  color: #475569;
+  font-size: 1.25rem;
+  line-height: 1;
+  cursor: pointer;
+  flex-shrink: 0;
+  transition: background 0.2s ease, color 0.2s ease;
+}
+
+.packageMenuClose:active {
+  background: rgba(249, 115, 22, 0.15);
+  color: var(--orange-deep);
+}
+
+.packageMenuList {
+  margin: 0;
+  padding: 8px 12px;
+  list-style: none;
+  overflow-y: auto;
+  flex: 1;
+  -webkit-overflow-scrolling: touch;
+}
+
+.packageMenuItem {
+  margin: 0;
+}
+
+.packageMenuLink {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 12px;
+  border-radius: 12px;
+  color: #1e293b;
+  font-family: var(--font-sans), system-ui, sans-serif;
+  font-size: 0.95rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition: background 0.2s ease, color 0.2s ease;
+}
+
+.packageMenuLink:active {
+  background: rgba(249, 115, 22, 0.1);
+  color: var(--orange-deep);
+}
+
+.packageMenuLink::after {
+  content: "›";
+  font-size: 1.1rem;
+  color: #94a3b8;
+  font-weight: 400;
+}
+
+.packageMenuFooter {
+  padding: 8px 12px 4px;
+  border-top: 1px solid rgba(15, 23, 42, 0.06);
+  flex-shrink: 0;
+}
+
+.packageMenuViewAll {
+  display: block;
+  width: 100%;
+  padding: 14px 16px;
+  border-radius: 12px;
+  background: linear-gradient(135deg, var(--orange) 0%, var(--orange-deep) 100%);
+  color: #fff;
+  font-family: var(--font-sans), system-ui, sans-serif;
+  font-size: 0.9rem;
+  font-weight: 700;
+  text-align: center;
+  text-decoration: none;
+  box-shadow: 0 4px 16px rgba(249, 115, 22, 0.35);
+}
+
+.packageMenuViewAll:active {
+  opacity: 0.92;
+}
+
+.navTabButton {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  flex: 1;
+  min-height: 48px;
+  min-width: 48px;
+  background: none;
+  border: none;
+  color: #64748b;
+  font-family: var(--font-sans), system-ui, sans-serif;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  cursor: pointer;
+  padding: 4px;
+  border-radius: 12px;
+  transition:
+    color 0.2s ease,
+    background 0.2s ease,
+    transform 0.15s ease;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.navTabButton:active {
+  transform: scale(0.9);
+  background: rgba(249, 115, 22, 0.1);
+}
+
+.navTabButton.navActive {
+  color: var(--orange-deep);
+}
+
+.navTabButton.navActive svg {
+  stroke: var(--orange-deep);
+}
+
+@keyframes menuFadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes menuSlideUp {
+  from {
+    transform: translateY(100%);
+  }
+
+  to {
+    transform: translateY(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .packageMenuBackdrop,
+  .packageMenuSheet {
+    animation: none;
+  }
+}

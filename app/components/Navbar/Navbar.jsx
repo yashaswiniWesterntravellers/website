@@ -3,21 +3,16 @@
 import { useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import {
+  DOMESTIC_PACKAGE_LINKS,
+  INTERNATIONAL_PACKAGE_LINKS,
+} from "../../data/navPackages";
 import styles from "./Navbar.module.css";
 
 const MAIN_LINKS = [
   { label: "Home", href: "/" },
   { label: "About Us", href: "/about-us" },
   { label: "Contact", href: "/contact" },
-];
-
-const INTERNATIONAL_PACKAGES = [
-  { label: "Thailand", href: "/?region=thailand" },
-  { label: "Myanmar", href: "/?region=myanmar" },
-  { label: "Malaysia", href: "/?region=malaysia" },
-  { label: "Singapore", href: "/?region=singapore" },
-  { label: "Bali", href: "/balii" },
-  { label: "Goa", href: "/?region=goa" },
 ];
 
 export default function Navbar({ variant = "default" }) {
@@ -76,7 +71,7 @@ export default function Navbar({ variant = "default" }) {
             International Packages <span className={styles.chevron}>▾</span>
           </span>
           <ul className={styles.dropdown}>
-            {INTERNATIONAL_PACKAGES.map((item) => (
+            {INTERNATIONAL_PACKAGE_LINKS.map((item) => (
               <li key={item.label}>
                 <Link href={item.href} className={styles.dropdownLink}>
                   {item.label}
@@ -124,7 +119,18 @@ export default function Navbar({ variant = "default" }) {
             </Link>
           ))}
           <p className={styles.mobileNavGroupLabel}>International Packages</p>
-          {INTERNATIONAL_PACKAGES.map((item) => (
+          {INTERNATIONAL_PACKAGE_LINKS.map((item) => (
+            <Link
+              key={item.label}
+              href={item.href}
+              className={styles.mobilePackageLabel}
+              onClick={closeMenu}
+            >
+              {item.label}
+            </Link>
+          ))}
+          <p className={styles.mobileNavGroupLabel}>Domestic Packages</p>
+          {DOMESTIC_PACKAGE_LINKS.map((item) => (
             <Link
               key={item.label}
               href={item.href}
@@ -135,8 +141,9 @@ export default function Navbar({ variant = "default" }) {
             </Link>
           ))}
           <p className={styles.mobileNavGroupLabel}>Other Packages</p>
-          <span className={styles.mobilePackageLabel}>Domestic Packages</span>
-          <span className={styles.mobilePackageLabel}>Visa-Free Packages</span>
+          <Link href="/#visa-free" className={styles.mobilePackageLabel} onClick={closeMenu}>
+            Visa-Free Packages
+          </Link>
           <button type="button" className={styles.mobileLoginBtn}>
             Login
           </button>

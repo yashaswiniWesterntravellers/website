@@ -112,6 +112,15 @@
   background: rgba(249, 115, 22, 0.1);
 }
 
+.mobileBottomNav .navTabButton.navActive {
+  color: var(--orange-deep);
+  background: rgba(249, 115, 22, 0.1);
+}
+
+.mobileBottomNav .navTabButton.navActive svg {
+  stroke: var(--orange-deep);
+}
+
 .mobileBottomNav a.navActive {
   color: var(--orange-deep);
 }

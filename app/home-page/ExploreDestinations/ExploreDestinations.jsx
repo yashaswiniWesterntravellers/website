@@ -12,9 +12,18 @@ export default function ExploreDestinations({ region, packageType }) {
   let description = "Browse regions from the menu above, or explore everywhere below.";
 
   if (normalizedPackage === "domestic") {
-    list = DOMESTIC_DESTINATIONS;
-    title = "Domestic destinations";
-    description = "Holiday tours across India — beaches, hills, and heritage.";
+    const domesticFiltered = normalized
+      ? DOMESTIC_DESTINATIONS.filter(
+          (d) => d.name.toLowerCase() === normalized.toLowerCase()
+        )
+      : DOMESTIC_DESTINATIONS;
+    list = domesticFiltered.length ? domesticFiltered : DOMESTIC_DESTINATIONS;
+    title = normalized
+      ? `Domestic — ${normalized.charAt(0).toUpperCase()}${normalized.slice(1)}`
+      : "Domestic destinations";
+    description = normalized
+      ? `Holiday tours in ${normalized.charAt(0).toUpperCase()}${normalized.slice(1)}.`
+      : "Holiday tours across India — beaches, hills, and heritage.";
   } else if (normalizedPackage === "international") {
     const filtered = normalized
       ? DESTINATIONS.filter((d) => d.region.toLowerCase() === normalized.toLowerCase())
