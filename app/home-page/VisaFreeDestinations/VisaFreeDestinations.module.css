@@ -369,11 +369,12 @@
 
   .mosaic {
     display: grid;
-    grid-template-columns: minmax(0, 1fr) minmax(0, 1.18fr) minmax(0, 1fr);
-    grid-template-rows: minmax(0, 1fr) minmax(0, 1fr);
-    gap: clamp(8px, 2vw, 14px);
-    min-height: min(52vw, 420px);
-    max-height: 520px;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    grid-template-rows: repeat(2, minmax(0, 1fr));
+    gap: clamp(8px, 2vw, 12px);
+    aspect-ratio: 5 / 4;
+    min-height: 260px;
+    max-height: min(72vw, 400px);
     width: 100%;
     min-width: 0;
   }
@@ -407,6 +408,7 @@
   .card {
     border-radius: 10px;
     min-height: 0;
+    height: 100%;
   }
 
   .card:active {

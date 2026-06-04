@@ -132,7 +132,18 @@
 }
 
 @media (max-width: 767px) {
-  .mobileBottomNav a {
+  .mobileBottomNav {
+    justify-content: space-evenly;
+    padding-left: 4px;
+    padding-right: 4px;
+  }
+
+  .mobileBottomNav a,
+  .mobileBottomNav button,
+  .mobileBottomNav .mobileNavTab {
+    flex: 1 1 0;
+    min-width: 0;
+    max-width: none;
     font-size: 9px;
     letter-spacing: 0;
     padding: 4px 2px;

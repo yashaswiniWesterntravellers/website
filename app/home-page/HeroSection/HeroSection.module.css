@@ -864,10 +864,10 @@
   .heroLayout {
     flex: 1;
     min-height: 0;
-    padding: 56px 12px 72px;
+    padding: max(56px, calc(12px + env(safe-area-inset-top, 0px))) 16px 16px;
     align-items: center;
-    justify-content: center;
-    gap: 8px;
+    justify-content: space-evenly;
+    gap: 0;
   }
 
   .collageLeft,
@@ -876,9 +876,14 @@
   }
 
   .heroContent {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
     width: 100%;
     max-width: 100%;
-    padding: 0 8px;
+    padding: 0 12px;
+    gap: clamp(12px, 2.5vh, 18px);
   }
 
   .heroEyebrow {
@@ -891,7 +896,8 @@
     font-size: clamp(1.85rem, 8vw, 2.35rem);
     white-space: normal;
     line-height: 1.1;
-    margin-bottom: 8px;
+    margin: 0;
+    text-align: center;
   }
 
   .heroSubtitle {
@@ -902,7 +908,9 @@
 
   .searchForm {
     width: 100%;
+    max-width: 100%;
     height: 54px;
+    margin: 0;
     padding: 0 5px 0 16px;
   }
 
@@ -921,17 +929,15 @@
 
   .heroChips {
     flex-wrap: nowrap;
-    justify-content: flex-start;
+    justify-content: center;
     overflow-x: auto;
-    margin-top: 14px;
-    padding: 4px 4px 8px;
-    margin-left: -8px;
-    margin-right: -8px;
-    width: calc(100% + 16px);
+    margin: 0;
+    padding: 4px 0 8px;
+    width: 100%;
     scrollbar-width: none;
     -webkit-overflow-scrolling: touch;
-    mask-image: linear-gradient(90deg, transparent, #000 6%, #000 94%, transparent);
-    -webkit-mask-image: linear-gradient(90deg, transparent, #000 6%, #000 94%, transparent);
+    mask-image: linear-gradient(90deg, transparent, #000 4%, #000 96%, transparent);
+    -webkit-mask-image: linear-gradient(90deg, transparent, #000 4%, #000 96%, transparent);
   }
 
   .heroChips::-webkit-scrollbar {
@@ -945,22 +951,38 @@
   }
 
   .heroStats {
-    gap: 10px 16px;
-    margin-top: 12px;
+    display: flex;
+    width: 100%;
+    gap: 8px;
+    margin: 0;
+    padding: 0;
+  }
+
+  .heroStats li {
+    flex: 1 1 0;
+    min-width: 0;
+    padding: 10px 6px;
+    border-radius: 12px;
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.16);
+    text-align: center;
   }
 
   .heroStats strong {
-    font-size: 1.1rem;
+    font-size: 1rem;
   }
 
   .heroStats span {
-    font-size: 0.65rem;
+    font-size: 0.6rem;
+    line-height: 1.2;
   }
 
   .quoteBorder {
     position: relative;
-    padding: 10px 0;
-    border-radius: 0 0 28px 28px;
+    flex-shrink: 0;
+    width: 100%;
+    padding: 12px 0;
+    border-radius: 0;
   }
 
   .quoteStatic {
