@@ -373,8 +373,8 @@
     grid-template-rows: repeat(2, minmax(0, 1fr));
     gap: clamp(8px, 2vw, 12px);
     aspect-ratio: 5 / 4;
-    min-height: 260px;
-    max-height: min(72vw, 400px);
+    min-height: 240px;
+    max-height: min(68vw, 360px);
     width: 100%;
     min-width: 0;
   }

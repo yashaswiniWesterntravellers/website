@@ -824,8 +824,8 @@
 /* Mobile home hero (max-width: 767px) — full-screen background image */
 @media (max-width: 767px) {
   .container {
-    height: 100svh;
-    min-height: 100svh;
+    height: 88svh;
+    min-height: 88svh;
     max-height: none;
     background: #0f172a;
     border-radius: 0;
