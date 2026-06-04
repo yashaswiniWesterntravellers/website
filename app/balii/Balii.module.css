@@ -582,26 +582,90 @@
   }
 }
 
-@media (max-width: 640px) {
-  .packageGrid {
-    grid-template-columns: 1fr;
-  }
-
+@media (max-width: 767px) {
   .pageHero {
-    min-height: min(72vh, 480px);
+    min-height: min(70svh, 440px);
+    border-radius: 0 0 24px 24px;
+    overflow: hidden;
   }
 
   .pageHeroContent {
-    margin-left: 20px;
-    max-width: calc(100% - 40px);
+    margin-left: 16px;
+    max-width: calc(100% - 32px);
+    padding: 24px 0;
+  }
+
+  .heroBrand {
+    font-size: clamp(2.5rem, 12vw, 3.5rem);
+  }
+
+  .introSection {
+    padding: 28px 16px 32px;
+    border-radius: 0;
+  }
+
+  .introGrid {
+    gap: 12px;
+  }
+
+  .introCard {
+    border-radius: 16px;
+    min-height: 120px;
+    padding: 18px 10px;
+  }
+
+  .introExploreBtn {
+    width: 100%;
+    max-width: 320px;
+    min-height: 48px;
   }
 
   .categoryHero {
-    min-height: 320px;
+    min-height: 280px;
+    border-radius: 0 0 20px 20px;
+    overflow: hidden;
   }
 
   .categoryHeroContent {
-    margin-left: 20px;
-    max-width: calc(100% - 40px);
+    margin-left: 16px;
+    max-width: calc(100% - 32px);
+  }
+
+  .categoryBar {
+    padding: 12px 16px;
+  }
+
+  .main {
+    padding: 16px 16px 24px;
+  }
+
+  .packageGrid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .packageCard {
+    border-radius: 16px;
+    box-shadow: 0 4px 20px rgba(15, 23, 42, 0.08);
+  }
+
+  .packageImageWrap,
+  .packageImage {
+    height: 200px;
+  }
+
+  .callbackBtn,
+  .phoneBtn {
+    min-height: 48px;
+  }
+
+  .cardActions {
+    gap: 12px;
+  }
+}
+
+@media (max-width: 640px) {
+  .packageGrid {
+    grid-template-columns: 1fr;
   }
 }

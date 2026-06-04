@@ -274,12 +274,38 @@
   line-height: 1.35;
 }
 
-@media (max-width: 720px) {
+@media (min-width: 768px) and (max-width: 1023px) {
+  .section {
+    min-height: auto;
+    padding: 48px 24px;
+  }
+
+  .grid {
+    gap: 16px;
+  }
+}
+
+@media (max-width: 767px) {
+  .section {
+    min-height: calc(100svh - var(--wt-mobile-nav-h));
+    padding: 32px 16px 24px;
+  }
+
   .grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px;
   }
 
   .card {
-    min-height: 150px;
+    min-height: 140px;
+    border-radius: 16px;
+  }
+
+  .heading {
+    font-size: clamp(1.85rem, 7vw, 2.25rem);
+  }
+
+  .lead {
+    font-size: 0.95rem;
   }
 }

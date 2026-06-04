@@ -18,6 +18,13 @@ export function enrichDestinationForPackage(dest) {
   };
 }
 
+export const DOMESTIC_DESTINATIONS = [
+  { id: 201, name: "Goa", tagline: "Beaches & nightlife", image: "/popular-destinations/roadtrip-coast.png", region: "India" },
+  { id: 202, name: "Kerala", tagline: "Backwaters & hills", image: "/exploreasia/bali.jpeg", region: "India" },
+  { id: 203, name: "Rajasthan", tagline: "Heritage & deserts", image: "/exploreeurope/rome.jpeg", region: "India" },
+  { id: 204, name: "Manali", tagline: "Mountains & adventure", image: "/exploreeurope/santorini.jpeg", region: "India" },
+];
+
 export const HOME_SHOWCASE = [
   { id: 101, name: "Srilanka", tagline: "The city of life", image: "/popular-destinations/roadtrip-coast.png" },
   { id: 102, name: "Maldives", tagline: "Tropical paradise", image: "/exploreasia/bali.jpeg" },

@@ -27,8 +27,10 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en" className={`${montserrat.variable} ${greatVibes.variable}`}>
-      <body className={montserrat.className}>
-        {children}
+      <body
+        className={`${montserrat.className} min-h-screen overflow-x-hidden max-lg:pb-[calc(var(--wt-mobile-nav-h)+var(--wt-safe-bottom))]`}
+      >
+        <div className="max-lg:overflow-x-hidden">{children}</div>
         <TravelQuoteBar />
         <Footer />
         <Suspense fallback={null}>

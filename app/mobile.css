@@ -1,11 +1,27 @@
 /* ============================================================
-   MOBILE APP EXPERIENCE — only applies at ≤ 768px
-   Desktop is completely untouched.
+   MOBILE & TABLET APP EXPERIENCE
+   Desktop (min-width: 1024px): no rules here — layout unchanged.
+   Tablet: 768px–1023px | Mobile: max-width: 767px
    ============================================================ */
 
-@media (max-width: 768px) {
+/* ── Tablet (768px–1023px) ── */
+@media (min-width: 768px) and (max-width: 1023px) {
+  html {
+    scroll-behavior: smooth;
+    -webkit-tap-highlight-color: transparent;
+  }
 
-  /* ── Base ── */
+  body {
+    overscroll-behavior-y: contain;
+  }
+
+  .mobileBottomNav {
+    display: flex !important;
+  }
+}
+
+/* ── Mobile (max-width: 767px) ── */
+@media (max-width: 767px) {
   html {
     scroll-behavior: smooth;
     -webkit-tap-highlight-color: transparent;
@@ -16,263 +32,34 @@
     background: #ffffff;
   }
 
-  /* ── Hero: full-screen app splash ── */
-  .container {
-    height: 90svh !important;
-    max-height: none !important;
-    border-radius: 0 0 32px 32px;
-    overflow: hidden;
+  img,
+  video {
+    max-width: 100%;
+    height: auto;
   }
 
-  /* ── Navbar: transparent overlay on hero image ── */
-  .navbarOverlay {
-    background: transparent !important;
-  }
-
-  .navbar:not(.navbarHero):not(.navbarOverlay) {
-    padding: 14px 18px !important;
-    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.45), transparent) !important;
-    backdrop-filter: none !important;
-  }
-
-  .logoMain {
-    font-size: 20px !important;
-  }
-  .logoSub {
-    font-size: 17px !important;
-  }
-
-  .loginBtn {
-    display: none !important;
-  }
-
-  /* ── Hero text: app-style big headline ── */
-  .heroContent {
-    padding-top: 0 !important;
-    justify-content: center !important;
-    gap: 14px !important;
-  }
-
-  .heroContent h1 {
-    font-size: clamp(1.85rem, 8.5vw, 3.25rem) !important;
-    white-space: nowrap !important;
-    background: none !important;
-    backdrop-filter: none !important;
-    border-radius: 0 !important;
-    padding: 0 !important;
-  }
-
-  .heroContent p {
-    font-size: clamp(0.95rem, 3.8vw, 1.1rem) !important;
-    padding: 0 !important;
-  }
-
-  /* ── Search box: pill style ── */
-  .searchBox {
-    width: calc(100% - 40px) !important;
-    max-width: 360px !important;
-    height: 48px !important;
-    border-radius: 999px !important;
-    box-shadow: 0 8px 32px rgba(0,0,0,0.25) !important;
-    animation: mobileSearchIn 1s cubic-bezier(0.22, 1, 0.36, 1) 0.4s both !important;
-  }
-
-  .searchBox input {
-    font-size: 15px !important;
-    padding: 0 16px !important;
-  }
-
-  .searchBox button {
-    padding: 0 18px !important;
-    border-radius: 0 999px 999px 0 !important;
-    font-size: 18px !important;
-  }
-
-  /* ── Quote ticker: thinner on mobile ── */
-  .heroQuoteBar {
-    padding: 8px 0 !important;
-    border-radius: 0 !important;
-  }
-
-  .heroQuote {
-    font-size: 13px !important;
-    padding: 0 40px !important;
-  }
-
-  /* ── Mobile menu: full-screen drawer ── */
-  .mobileMenu {
-    position: fixed !important;
-    top: 0 !important;
-    left: 0 !important;
-    width: 100% !important;
-    height: 100% !important;
-    background: rgba(5, 15, 25, 0.97) !important;
-    backdrop-filter: blur(16px) !important;
-    z-index: 999 !important;
-    padding: 80px 0 40px !important;
-    overflow-y: auto !important;
-    animation: drawerIn 0.35s cubic-bezier(0.22, 1, 0.36, 1) both !important;
-  }
-
-  .mobileMenuItem {
-    border-bottom: 1px solid rgba(255,255,255,0.07) !important;
-  }
-
-  .mobileMenuLabel {
-    font-size: 18px !important;
-    padding: 18px 28px !important;
-    letter-spacing: 0.02em !important;
-  }
-
-  .mobileSubItem {
-    padding: 12px 48px !important;
-    font-size: 15px !important;
-  }
-
-  /* ── Section cards: app card style ── */
-  .sectionContainer {
-    padding: 20px 16px 24px !important;
-    background: #ffffff !important;
-    border-radius: 0 !important;
-    margin: 0 !important;
-    box-shadow: none !important;
-    animation: cardReveal 0.6s cubic-bezier(0.22, 1, 0.36, 1) both;
-  }
-
-  .title {
-    font-size: 0.85rem !important;
-    letter-spacing: 0.12em !important;
-  }
-
-  .header {
-    margin-bottom: 12px !important;
-  }
-
-  /* ── Destination cards: swipeable, taller ── */
-  .card {
-    border-radius: 10px !important;
-    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1) !important;
-    transition: transform 0.25s cubic-bezier(0.22,1,0.36,1), box-shadow 0.25s ease !important;
-  }
-
-  .card:active {
-    transform: scale(0.96) !important;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.18) !important;
-  }
-
-  /* ── Arrow buttons: bigger tap targets ── */
-  .arrowBtn {
-    width: 40px !important;
-    height: 40px !important;
-    font-size: 1rem !important;
-  }
-
-  /* ── TripStyles panel ── */
-  .outer {
-    padding: 16px 12px 24px !important;
-    background: #ffffff !important;
-  }
-
-  .panel {
-    border-radius: 12px !important;
-    padding: 18px 14px 22px !important;
-  }
-
-  .sectionTitle {
-    font-size: clamp(1.5rem, 6vw, 2rem) !important;
-    margin-bottom: 16px !important;
-  }
-
-  .categoryTitle {
-    font-size: clamp(1.3rem, 5vw, 1.7rem) !important;
-  }
-
-  /* ── VisaFree section ── */
-  .section {
-    padding: 18px 12px 24px !important;
-    background: #ffffff !important;
-    border-radius: 0 !important;
-    margin: 0 !important;
-  }
-
-  .mosaic {
-    gap: 10px !important;
-    border-radius: 10px !important;
-  }
-
-  /* Visa-free mosaic tiles (not destination carousel cards) */
-  .section .card {
-    border-radius: 10px !important;
-  }
-
-  /* ── YasIsland banner ── */
-  .banner {
-    border-radius: 10px !important;
-    min-height: 220px !important;
-  }
-
-  .banner:hover {
-    transform: none !important;
-  }
-
-  .banner:active {
-    transform: scale(0.98) !important;
-  }
-
-  .heading {
-    font-size: clamp(1.3rem, 6vw, 1.8rem) !important;
-  }
-
-  .cta {
-    padding: 12px 28px !important;
-    font-size: 0.9rem !important;
-    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25) !important;
-  }
-
-  /* ── TravelQuoteBar ── */
-  .wrap {
-    padding: 14px 0 !important;
-  }
-
-  .marqueeChunk {
-    font-size: clamp(0.8rem, 3.5vw, 1rem) !important;
-  }
-
-  /* ── Footer: compact app footer ── */
-  .footer {
-    border-radius: 24px 24px 0 0 !important;
-    padding-bottom: 90px !important; /* space for bottom nav */
-  }
-
-  .navGrid {
-    grid-template-columns: 1fr 1fr !important;
-    gap: 20px 16px !important;
-    padding: 24px 16px 20px !important;
-  }
-
-  .partners {
-    padding: 20px 16px 24px !important;
-  }
-
-  .partnerRow {
-    gap: 20px !important;
-  }
-
-  /* ── WhatsApp button: move up above bottom nav ── */
-  .whatsapp-btn {
-    bottom: 80px !important;
-    right: 16px !important;
-    width: 50px !important;
-    height: 50px !important;
-  }
-
-  /* ── Bottom Navigation Bar ── */
+  /* Fixed bottom navigation */
   .mobileBottomNav {
     display: flex !important;
+    padding-bottom: var(--wt-safe-bottom);
+    height: calc(var(--wt-mobile-nav-h) + var(--wt-safe-bottom));
+  }
+
+  /* WhatsApp FAB above bottom nav */
+  .whatsapp-btn {
+    bottom: calc(var(--wt-mobile-nav-h) + var(--wt-safe-bottom) + 12px) !important;
+    right: 16px !important;
+    width: 52px !important;
+    height: 52px !important;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+
+  .whatsapp-btn:active {
+    transform: scale(0.92);
   }
 }
 
-/* Bottom nav — hidden on desktop, shown via media query above */
+/* Bottom nav — hidden on desktop (1024px+) */
 .mobileBottomNav {
   display: none;
   position: fixed;
@@ -280,15 +67,15 @@
   left: 0;
   right: 0;
   z-index: 9998;
-  height: 64px;
-  background: rgba(10, 15, 25, 0.92);
+  min-height: var(--wt-mobile-nav-h);
+  background: rgba(255, 255, 255, 0.94);
   backdrop-filter: blur(20px) saturate(180%);
   -webkit-backdrop-filter: blur(20px) saturate(180%);
-  border-top: 1px solid rgba(255,255,255,0.08);
-  align-items: center;
+  border-top: 1px solid rgba(15, 23, 42, 0.08);
+  align-items: flex-start;
   justify-content: space-around;
-  padding: 0 8px;
-  box-shadow: 0 -4px 24px rgba(0,0,0,0.3);
+  padding: 6px 8px 0;
+  box-shadow: 0 -4px 24px rgba(15, 23, 42, 0.08);
 }
 
 .mobileBottomNav a,
@@ -297,61 +84,74 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 3px;
+  gap: 4px;
   flex: 1;
+  min-height: 48px;
+  min-width: 48px;
   background: none;
   border: none;
-  color: rgba(255,255,255,0.5);
+  color: #64748b;
+  font-family: var(--font-sans), system-ui, sans-serif;
   font-size: 10px;
   font-weight: 600;
-  letter-spacing: 0.04em;
+  letter-spacing: 0.02em;
   text-decoration: none;
   cursor: pointer;
-  padding: 6px 4px;
+  padding: 4px;
   border-radius: 12px;
-  transition: color 0.2s ease, background 0.2s ease, transform 0.15s ease;
+  transition:
+    color 0.2s ease,
+    background 0.2s ease,
+    transform 0.15s ease;
   -webkit-tap-highlight-color: transparent;
 }
 
 .mobileBottomNav a:active,
 .mobileBottomNav button:active {
-  transform: scale(0.88);
-  background: rgba(255,165,0,0.12);
+  transform: scale(0.9);
+  background: rgba(249, 115, 22, 0.1);
 }
 
-.mobileBottomNav a.navActive,
-.mobileBottomNav button.navActive {
-  color: #ff9d42;
+.mobileBottomNav a.navActive {
+  color: var(--orange-deep);
+}
+
+.mobileBottomNav a.navActive svg {
+  stroke: var(--orange-deep);
 }
 
 .mobileBottomNav svg {
-  width: 22px;
-  height: 22px;
-  stroke-width: 1.8;
+  width: 24px;
+  height: 24px;
+  stroke-width: 1.75;
 }
 
-/* ── Keyframes ── */
-@keyframes mobileHeroIn {
-  from { opacity: 0; transform: translateY(40px) scale(0.92); }
-  to   { opacity: 1; transform: translateY(0) scale(1); }
-}
-
-@keyframes mobileSubIn {
-  from { opacity: 0; transform: translateY(24px); }
-  to   { opacity: 1; transform: translateY(0); }
-}
-
-@keyframes mobileSearchIn {
-  from { opacity: 0; transform: translateY(20px) scale(0.95); }
-  to   { opacity: 1; transform: translateY(0) scale(1); }
+@media (max-width: 767px) {
+  .mobileBottomNav a {
+    font-size: 9px;
+    letter-spacing: 0;
+    padding: 4px 2px;
+  }
 }
 
 @keyframes drawerIn {
-  from { opacity: 0; transform: translateX(100%); }
-  to   { opacity: 1; transform: translateX(0); }
+  from {
+    opacity: 0;
+    transform: translateX(100%);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
 }
 
 @keyframes cardReveal {
-  from { opacity: 0; transform: translateY(32px); }
-  to   { opacity: 1; transform: translateY(0); }
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }

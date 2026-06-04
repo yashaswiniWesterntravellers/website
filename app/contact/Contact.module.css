@@ -675,3 +675,53 @@
     height: 280px;
   }
 }
+
+@media (max-width: 767px) {
+  .main {
+    padding: 20px 16px 32px;
+  }
+
+  .hero {
+    gap: 20px;
+    margin-bottom: 28px;
+  }
+
+  .heroTitle {
+    font-size: clamp(2rem, 9vw, 2.75rem);
+  }
+
+  .formSection {
+    gap: 20px;
+  }
+
+  .formPanel {
+    border-radius: 16px;
+    padding: 20px 16px;
+    box-shadow: 0 4px 24px rgba(15, 23, 42, 0.06);
+  }
+
+  .form input,
+  .form select,
+  .form textarea {
+    min-height: 48px;
+    font-size: 16px;
+    border-radius: 12px;
+  }
+
+  .submitBtn {
+    width: 100%;
+    min-height: 48px;
+    border-radius: 12px;
+    font-size: 1rem;
+  }
+
+  .infoCard {
+    border-radius: 14px;
+    padding: 16px;
+  }
+
+  .mapFrame {
+    border-radius: 16px;
+    height: 240px;
+  }
+}

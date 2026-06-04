@@ -1,11 +1,20 @@
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
 import Navbar from "../../components/Navbar/Navbar";
 import { TRAVEL_QUOTE, TRAVEL_QUOTE_ARIA } from "../../data/travelQuote";
 import styles from "./HeroSection.module.css";
 
 const HERO_BACKGROUND = "/Background%202.jpg";
+
+const HERO_QUICK_LINKS = [
+  { label: "Bali", href: "/balii", icon: "🏝️" },
+  { label: "Thailand", href: "/?region=thailand", icon: "🇹🇭" },
+  { label: "Singapore", href: "/?region=singapore", icon: "🇸🇬" },
+  { label: "Honeymoon", href: "/balii#bali-trip-styles", icon: "♥" },
+  { label: "Visa-free", href: "/#destinations", icon: "✦" },
+];
 
 /* ── Destination strip icons ── */
 
@@ -262,6 +271,11 @@ export default function HeroSection() {
       />
 
       <div className={styles.overlay} aria-hidden="true" />
+      <div className={styles.ambientGlow} aria-hidden="true">
+        <span className={styles.glowOrb1} />
+        <span className={styles.glowOrb2} />
+        <span className={styles.glowOrb3} />
+      </div>
 
       <Navbar variant="overlay" />
 
@@ -271,26 +285,53 @@ export default function HeroSection() {
         </div>
 
         <div className={styles.heroContent}>
-          <h1 className={styles.heroTitle}>Let&apos;s travel the world</h1>
-          <p className={styles.heroSubtitle}>
-            Explore destinations, places, and unforgettable experiences
-          </p>
+          <h1 className={styles.heroTitle}>
+            Let&apos;s travel the{" "}
+            <span className={styles.heroTitleAccent}>world</span>
+          </h1>
 
           <form className={styles.searchForm} role="search" onSubmit={(e) => e.preventDefault()}>
             <input
               type="search"
               name="destination"
-              placeholder="Search destinations..."
+              placeholder="Where do you want to go?"
               className={styles.searchInput}
               aria-label="Search destinations"
             />
-            <span className={styles.searchIcon} aria-hidden="true">
+            <button type="submit" className={styles.searchBtn} aria-label="Search">
               <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <circle cx="11" cy="11" r="7" stroke="currentColor" strokeWidth="2" />
                 <path d="M20 20L16 16" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
               </svg>
-            </span>
+              <span className={styles.searchBtnText}>Explore</span>
+            </button>
           </form>
+
+          <div className={styles.heroChips} role="list" aria-label="Popular destinations">
+            {HERO_QUICK_LINKS.map((link) => (
+              <Link key={link.label} href={link.href} className={styles.heroChip} role="listitem">
+                <span className={styles.heroChipIcon} aria-hidden="true">
+                  {link.icon}
+                </span>
+                {link.label}
+              </Link>
+            ))}
+          </div>
+
+          <ul className={styles.heroStats} aria-label="Highlights">
+            <li>
+              <strong>50+</strong>
+              <span>Destinations</span>
+            </li>
+            <li>
+              <strong>24/7</strong>
+              <span>Travel support</span>
+            </li>
+            <li>
+              <strong>Best</strong>
+              <span>Price deals</span>
+            </li>
+          </ul>
         </div>
 
         <div className={styles.collageRight}>

@@ -1,15 +1,39 @@
 import Link from "next/link";
 import DestinationGrid from "../shared/DestinationGrid/DestinationGrid";
-import { DESTINATIONS } from "../destinations/destinations";
+import { DESTINATIONS, DOMESTIC_DESTINATIONS } from "../destinations/destinations";
 import styles from "./ExploreDestinations.module.css";
 
-export default function ExploreDestinations({ region }) {
+export default function ExploreDestinations({ region, packageType }) {
+  const normalizedPackage = typeof packageType === "string" ? packageType.trim().toLowerCase() : undefined;
   const normalized = typeof region === "string" ? region.trim() : undefined;
-  const filtered = normalized
-    ? DESTINATIONS.filter((d) => d.region.toLowerCase() === normalized.toLowerCase())
-    : DESTINATIONS;
-  const list = filtered.length ? filtered : DESTINATIONS;
-  const title = normalized ? `Destinations — ${normalized}` : "All destinations";
+
+  let list = DESTINATIONS;
+  let title = "All destinations";
+  let description = "Browse regions from the menu above, or explore everywhere below.";
+
+  if (normalizedPackage === "domestic") {
+    list = DOMESTIC_DESTINATIONS;
+    title = "Domestic destinations";
+    description = "Holiday tours across India — beaches, hills, and heritage.";
+  } else if (normalizedPackage === "international") {
+    const filtered = normalized
+      ? DESTINATIONS.filter((d) => d.region.toLowerCase() === normalized.toLowerCase())
+      : DESTINATIONS;
+    list = filtered.length ? filtered : DESTINATIONS;
+    title = normalized ? `International — ${normalized}` : "International destinations";
+    description = normalized
+      ? `Places we love in ${normalized}.`
+      : "Explore the world with curated international packages.";
+  } else {
+    const filtered = normalized
+      ? DESTINATIONS.filter((d) => d.region.toLowerCase() === normalized.toLowerCase())
+      : DESTINATIONS;
+    list = filtered.length ? filtered : DESTINATIONS;
+    title = normalized ? `Destinations — ${normalized}` : "All destinations";
+    description = normalized
+      ? `Places we love in ${normalized}.`
+      : "Browse regions from the menu above, or explore everywhere below.";
+  }
 
   return (
     <section id="destinations" className={styles.section}>
@@ -27,11 +51,7 @@ export default function ExploreDestinations({ region }) {
 
       <header className={styles.pageHeader}>
         <h1>{title}</h1>
-        <p>
-          {normalized
-            ? `Places we love in ${normalized}.`
-            : "Browse regions from the menu above, or explore everywhere below."}
-        </p>
+        <p>{description}</p>
       </header>
 
       <DestinationGrid title="Explore destinations" destinations={list} variant="package" />

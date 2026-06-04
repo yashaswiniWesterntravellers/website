@@ -1,6 +1,9 @@
+@import "tailwindcss";
 @import "./styles/headings.css";
 
 :root {
+  --wt-mobile-nav-h: 64px;
+  --wt-safe-bottom: env(safe-area-inset-bottom, 0px);
   /* Orange & gold */
   --gold-light: #fde68a;
   --gold: #fbbf24;

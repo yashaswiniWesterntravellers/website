@@ -182,3 +182,48 @@
   font-size: 0.8rem;
   color: #737373;
 }
+
+@media (min-width: 768px) and (max-width: 1023px) {
+  .navGrid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px 20px;
+  }
+}
+
+@media (max-width: 767px) {
+  .footer {
+    border-radius: 20px 20px 0 0;
+    margin-top: 8px;
+  }
+
+  .inner {
+    padding: 0 16px 20px;
+  }
+
+  .partners {
+    padding: 20px 16px 24px;
+  }
+
+  .partnerRow {
+    gap: 16px;
+  }
+
+  .navGrid {
+    grid-template-columns: 1fr 1fr;
+    gap: 20px 12px;
+    padding: 20px 16px;
+  }
+
+  .navColTitle {
+    font-size: 0.8rem;
+  }
+
+  .navColList a {
+    font-size: 0.8rem;
+  }
+
+  .copy {
+    padding: 16px 16px 24px;
+    font-size: 0.75rem;
+  }
+}

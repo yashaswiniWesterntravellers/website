@@ -750,8 +750,34 @@
 
   .scrollTop {
     right: 16px;
-    bottom: 88px;
-    width: 40px;
-    height: 40px;
+    bottom: calc(var(--wt-mobile-nav-h) + var(--wt-safe-bottom) + 16px);
+    width: 44px;
+    height: 44px;
+  }
+}
+
+@media (max-width: 767px) {
+  .main {
+    padding: 16px 16px 32px;
+  }
+
+  .pageHeader {
+    text-align: left;
+  }
+
+  .introWrap {
+    padding: 8px 0 20px;
+  }
+
+  .highlightCard {
+    border-radius: 14px;
+  }
+
+  .timelineItem {
+    padding-left: 20px;
+  }
+
+  .ourTravelsSection {
+    border-radius: 14px;
   }
 }

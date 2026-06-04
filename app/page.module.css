@@ -4,3 +4,9 @@
   min-height: 100%;
   background: #ffffff;
 }
+
+@media (max-width: 767px) {
+  .mainWrapper {
+    background: #f8fafc;
+  }
+}

@@ -1,0 +1,24 @@
+/* Home page only — mobile (max-width: 767px). Desktop/tablet unchanged. */
+
+@media (max-width: 767px) {
+  .home-page-root {
+    overflow-x: hidden;
+    width: 100%;
+    background: #f8fafc;
+  }
+
+  /* App-style section rhythm between blocks */
+  .home-page-root > section,
+  .home-page-root > div {
+    scroll-margin-top: 56px;
+  }
+
+  .home-page-root > * + * {
+    border-top: 1px solid rgba(15, 23, 42, 0.04);
+  }
+
+  /* First block (hero wrapper) — no top border */
+  .home-page-root > :first-child {
+    border-top: none;
+  }
+}

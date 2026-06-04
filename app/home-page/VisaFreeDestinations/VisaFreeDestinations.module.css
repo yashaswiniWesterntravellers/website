@@ -83,18 +83,6 @@
   width: 100%;
 }
 
-@media (max-width: 768px) {
-  .viewport {
-    overflow-x: auto;
-    scrollbar-width: none;
-    -ms-overflow-style: none;
-  }
-
-  .viewport::-webkit-scrollbar {
-    display: none;
-  }
-}
-
 .mosaic {
   display: grid;
   grid-template-columns: minmax(0, 1fr) minmax(0, 1.18fr) minmax(0, 1fr);
@@ -103,7 +91,7 @@
   min-height: min(52vw, 420px);
   max-height: 520px;
   width: 100%;
-  min-width: min(100%, 900px);
+  min-width: 0;
 }
 
 .card {
@@ -303,13 +291,14 @@
   letter-spacing: 0.04em;
 }
 
-@media (max-width: 768px) {
+@media (min-width: 768px) and (max-width: 1023px) {
   .mosaic {
     grid-template-columns: 1fr 1fr;
     grid-template-rows: auto;
     min-height: unset;
     max-height: none;
-    min-width: 100%;
+    min-width: 0;
+    width: 100%;
   }
 
   .slotLeftTop {
@@ -328,7 +317,7 @@
     grid-column: 1 / -1;
     grid-row: 2;
     aspect-ratio: 16 / 11;
-    min-height: 220px;
+    min-height: 200px;
   }
 
   .slotRightTop {
@@ -341,6 +330,105 @@
     grid-column: 2;
     grid-row: 3;
     aspect-ratio: 16 / 10;
+  }
+}
+
+/* Mobile: same bento mosaic as laptop (3 columns, tall center) */
+@media (max-width: 767px) {
+  .section {
+    padding: 20px 16px 24px;
+    background: #ffffff;
+    overflow: hidden;
+  }
+
+  .header {
+    margin-bottom: 14px;
+  }
+
+  .title {
+    font-size: clamp(1.15rem, 4.5vw, 1.4rem);
+    flex: 1;
+    min-width: 0;
+  }
+
+  .controls {
+    gap: 8px;
+  }
+
+  .arrow {
+    width: 40px;
+    height: 40px;
+    font-size: 1rem;
+    flex-shrink: 0;
+  }
+
+  .viewport {
+    overflow: hidden;
+    width: 100%;
+  }
+
+  .mosaic {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1.18fr) minmax(0, 1fr);
+    grid-template-rows: minmax(0, 1fr) minmax(0, 1fr);
+    gap: clamp(8px, 2vw, 14px);
+    min-height: min(52vw, 420px);
+    max-height: 520px;
+    width: 100%;
+    min-width: 0;
+  }
+
+  .slotLeftTop {
+    grid-column: 1;
+    grid-row: 1;
+  }
+
+  .slotLeftBottom {
+    grid-column: 1;
+    grid-row: 2;
+  }
+
+  .slotCenter {
+    grid-column: 2;
+    grid-row: 1 / -1;
+    min-height: 0;
+  }
+
+  .slotRightTop {
+    grid-column: 3;
+    grid-row: 1;
+  }
+
+  .slotRightBottom {
+    grid-column: 3;
+    grid-row: 2;
+  }
+
+  .card {
+    border-radius: 10px;
+    min-height: 0;
+  }
+
+  .card:active {
+    transform: scale(0.99);
+  }
+
+  .pill {
+    padding: clamp(6px, 1.8vw, 11px) clamp(10px, 3.5vw, 20px);
+    gap: clamp(4px, 1vw, 8px);
+  }
+
+  .pin {
+    font-size: clamp(0.7rem, 2.4vw, 0.95rem);
+  }
+
+  .pillName {
+    font-size: clamp(0.62rem, 2.6vw, 0.9rem);
+  }
+
+  .price {
+    font-size: clamp(0.58rem, 2.2vw, 0.75rem);
+    padding: 0 clamp(6px, 2vw, 12px) clamp(8px, 2.5vw, 14px);
   }
 }
 
