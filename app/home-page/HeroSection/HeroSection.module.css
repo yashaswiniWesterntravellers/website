@@ -821,10 +821,10 @@
   }
 }
 
-/* Mobile home hero — image zone 300px tall (matches Bali) */
+/* Mobile home hero — image zone 380px tall (matches Bali) */
 @media (max-width: 767px) {
   .container {
-    --hero-mobile-image-zone: 300px;
+    --hero-mobile-image-zone: 380px;
     --hero-mobile-quote-h: 48px;
     height: calc(var(--hero-mobile-image-zone) + var(--hero-mobile-quote-h));
     min-height: unset;
@@ -842,7 +842,7 @@
     bottom: auto;
     width: calc(100% + 28px) !important;
     height: var(--hero-mobile-image-zone) !important;
-    min-height: 300px;
+    min-height: 380px;
     animation: none;
     transform: scale(1.04);
     object-position: center 38%;
@@ -856,7 +856,7 @@
     bottom: auto;
     width: calc(100% + 28px);
     height: var(--hero-mobile-image-zone);
-    min-height: 300px;
+    min-height: 380px;
   }
 
   .glowOrb1 {
