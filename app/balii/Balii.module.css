@@ -1030,8 +1030,8 @@
     max-width: none;
     margin-left: -14px;
     margin-right: -14px;
-    height: min(42svh, 300px);
-    min-height: 240px;
+    height: 300px;
+    min-height: 300px;
     pointer-events: none;
   }
 
