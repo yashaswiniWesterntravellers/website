@@ -74,6 +74,7 @@ export default function Footer() {
         <div>
           <h3 className={styles.navColTitle}>Company</h3>
           <ul className={styles.navColList}>
+            <li><Link href="/">Home</Link></li>
             <li><Link href="/about-us">About Us</Link></li>
             <li><Link href="#">Career</Link></li>
            <li><Link href="#">Testimonial</Link></li>

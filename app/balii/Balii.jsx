@@ -15,9 +15,31 @@ const PHONE = "+918050041118";
 
 const PAGE_HERO = {
   image: "/Balli/main%20image.jpg",
-  title: "Bali",
-  tagline: "Discover the Island of the Gods — turquoise waters, lush landscapes & timeless culture",
 };
+
+const HERO_HIGHLIGHTS = [
+  { icon: "🌾", label: "Ubud & rice terraces" },
+  { icon: "🛕", label: "Cliff temples & sunsets" },
+  { icon: "🏖️", label: "Seminyak & Kuta beaches" },
+  { icon: "⛵", label: "Nusa Penida day trips" },
+];
+
+const HERO_STATS = [
+  { value: "50+", label: "Curated packages" },
+  { value: "4.9★", label: "Traveller rated" },
+  { value: "From ₹46k", label: "Per person" },
+];
+
+const HERO_SPOTS = ["Ubud", "Kuta", "Seminyak", "Nusa Penida", "Uluwatu"];
+
+const HERO_TICKER = [
+  "Island of the Gods",
+  "Turquoise waters",
+  "Rice terraces",
+  "Timeless culture",
+  "Honeymoon escapes",
+  "Family adventures",
+];
 
 const BALI_CATEGORIES = [
   {
@@ -256,19 +278,98 @@ function CategorySection({ category, onViewMore }) {
   );
 }
 
-function PageHero() {
+function PageHero({ onExplore }) {
+  const tickerItems = [...HERO_TICKER, ...HERO_TICKER];
+
   return (
     <section className={styles.pageHero} aria-label="Bali">
-      <img
-        src={PAGE_HERO.image}
-        alt="Bali landscape"
-        className={styles.pageHeroBg}
-        loading="eager"
-      />
-      <div className={styles.pageHeroOverlay} />
-      <div className={styles.pageHeroContent}>
-        <h1 className={styles.heroBrand}>{PAGE_HERO.title}</h1>
-        <p className={styles.pageHeroTagline}>{PAGE_HERO.tagline}</p>
+      <div className={styles.pageHeroMedia}>
+        <img
+          src={PAGE_HERO.image}
+          alt="Bali landscape"
+          className={styles.pageHeroBg}
+          loading="eager"
+        />
+        <div className={styles.pageHeroOverlay} aria-hidden="true" />
+        <div className={styles.pageHeroDiagonal} aria-hidden="true" />
+        <p className={styles.pageHeroWatermark} aria-hidden="true">
+          BALI
+        </p>
+        <p className={styles.pageHeroVertical} aria-hidden="true">
+          Island of the Gods
+        </p>
+        <div className={styles.pageHeroMediaCaption} aria-hidden="true">
+          <span className={styles.pageHeroDiscover}>Discover</span>
+          <span className={styles.pageHeroTitleText}>Bali</span>
+        </div>
+      </div>
+
+      <div className={styles.pageHeroInner}>
+        <div className={styles.pageHeroMain}>
+          <p className={styles.pageHeroKicker}>
+            <span className={styles.pageHeroKickerLine} aria-hidden="true" />
+            Western Travellers · Indonesia
+          </p>
+          <h1 className={styles.pageHeroTitle}>
+            <span className={styles.pageHeroDiscover}>Discover</span>
+            <span className={styles.pageHeroTitleText}>Bali</span>
+          </h1>
+          <p className={styles.pageHeroLead}>
+            <span className={styles.pageHeroLeadAccent}>The Island of the Gods</span>
+            <span className={styles.pageHeroLeadRest}>
+              — where turquoise waters meet lush jungles, sacred temples, and
+              sunsets you&apos;ll never forget.
+            </span>
+          </p>
+          <ul className={styles.pageHeroSpots} aria-label="Popular areas in Bali">
+            {HERO_SPOTS.map((spot) => (
+              <li key={spot}>
+                <span className={styles.pageHeroSpotChip}>{spot}</span>
+              </li>
+            ))}
+          </ul>
+          <div className={styles.pageHeroActions}>
+            <button type="button" className={styles.pageHeroBtnPrimary} onClick={onExplore}>
+              Choose your trip style
+            </button>
+            <a href="#honeymoon" className={styles.pageHeroBtnGhost}>
+              Browse packages
+            </a>
+          </div>
+        </div>
+
+        <aside className={styles.pageHeroAside} aria-label="Bali highlights">
+          <ul className={styles.pageHeroHighlightList}>
+            {HERO_HIGHLIGHTS.map((item) => (
+              <li key={item.label} className={styles.pageHeroHighlightItem}>
+                <span className={styles.pageHeroHighlightIcon} aria-hidden="true">
+                  {item.icon}
+                </span>
+                <span className={styles.pageHeroHighlightLabel}>{item.label}</span>
+              </li>
+            ))}
+          </ul>
+        </aside>
+      </div>
+
+      <div className={styles.pageHeroStatsBar} aria-label="Bali travel highlights">
+        {HERO_STATS.map((stat) => (
+          <div key={stat.label} className={styles.pageHeroStat}>
+            <span className={styles.pageHeroStatValue}>{stat.value}</span>
+            <span className={styles.pageHeroStatLabel}>{stat.label}</span>
+          </div>
+        ))}
+      </div>
+
+      <div className={styles.pageHeroTicker} aria-hidden="true">
+        <div className={styles.pageHeroTickerTrack}>
+          {tickerItems.map((text, i) => (
+            <span key={`${text}-${i}`} className={styles.pageHeroTickerItem}>
+              {text}
+              <span className={styles.pageHeroTickerDot}>✦</span>
+            </span>
+          ))}
+        </div>
       </div>
     </section>
   );
@@ -345,7 +446,7 @@ export default function Balii() {
         />
       ) : (
         <>
-          <PageHero />
+          <PageHero onExplore={openStylePicker} />
           <BaliIntro onExplore={openStylePicker} />
           {BALI_CATEGORIES.map((category) => (
             <CategorySection

@@ -25,11 +25,13 @@ export default function MobileBottomNav() {
   const internationalActive =
     pathname === "/" && (packageParam === "international" || menuParam === "international");
   const contactActive = pathname === "/contact";
+  const regionParam = searchParams.get("region");
   const homeActive =
     pathname === "/" &&
     !domesticActive &&
     !internationalActive &&
-    !contactActive;
+    !contactActive &&
+    !regionParam;
 
   const handlePackageTab = (section) => {
     if (pathname === "/") {
@@ -40,22 +42,24 @@ export default function MobileBottomNav() {
     router.push(`/?menu=${section}`);
   };
 
-  const handleHome = () => {
+  const isCleanHome =
+    pathname === "/" && !menuParam && !packageParam && !regionParam;
+
+  const handleHomeClick = (e) => {
     closeNavMenu();
-    if (pathname === "/" && !menuParam && !packageParam) {
+    if (isCleanHome) {
+      e.preventDefault();
       window.scrollTo({ top: 0, behavior: "smooth" });
-      return;
     }
-    router.push("/");
   };
 
   return (
     <nav className="mobileBottomNav" aria-label="Mobile navigation">
-      <button
-        type="button"
+      <Link
+        href="/"
         className={`mobileNavTab${homeActive ? " navActive" : ""}`}
         aria-current={homeActive ? "page" : undefined}
-        onClick={handleHome}
+        onClick={handleHomeClick}
       >
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" xmlns="http://www.w3.org/2000/svg">
           <path
@@ -66,7 +70,7 @@ export default function MobileBottomNav() {
           <path d="M9 21V12h6v9" strokeLinecap="round" strokeLinejoin="round" />
         </svg>
         Home
-      </button>
+      </Link>
       <button
         type="button"
         className={`mobileNavTab${domesticActive ? " navActive" : ""}`}
