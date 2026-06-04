@@ -8,9 +8,10 @@ import TripStylePicker, {
 } from "../components/TripStylePicker/TripStylePicker";
 import styles from "./Balii.module.css";
 
-const PHONE = "+918050041118";
 const LOCATION = "Bali";
 const TRIP_STYLES_HASH = tripStyleSectionId(LOCATION);
+
+const PHONE = "+918050041118";
 
 const PAGE_HERO = {
   image: "/Balli/main%20image.jpg",
@@ -22,9 +23,6 @@ const BALI_CATEGORIES = [
   {
     id: "honeymoon",
     title: "Bali Honeymoon Packages",
-    heroSubtitle: "Honeymoon Packages",
-    heroTagline: "Romantic beaches, private villas & sunsets on the Island of the Gods",
-    heroImage: "/Balli/bali_honeymoon3.jpg",
     packages: [
       {
         duration: "7 days & 6 nights",
@@ -64,9 +62,6 @@ const BALI_CATEGORIES = [
   {
     id: "solo",
     title: "Bali Solo Trip Packages",
-    heroSubtitle: "Solo Trip Packages",
-    heroTagline: "Explore temples, rice terraces & island life at your own rhythm",
-    heroImage: "/Balli/bali_honeymoon2.jpeg",
     packages: [
       {
         duration: "7 days & 6 nights",
@@ -107,9 +102,6 @@ const BALI_CATEGORIES = [
   {
     id: "friends",
     title: "Bali Friends Trip Packages",
-    heroSubtitle: "Friends Trip Packages",
-    heroTagline: "Beach clubs, adventure trails & unforgettable group getaways",
-    heroImage: "/Balli/bali_couple1.webp",
     packages: [
       {
         duration: "6 days & 5 nights",
@@ -118,40 +110,37 @@ const BALI_CATEGORIES = [
         title: "Bali Squad Break | Beaches, Cafes & Adventure Trails",
         route: "3D Seminyak • 2D Ubud • 1D Nusa Penida",
         oldPrice: "INR 52,700",
-        price: "INR 39,500",
-        saveAmount: "INR 13,200",
+        price: "INR 40,500",
+        saveAmount: "INR 12,200",
         image: "/Balli/bali_couple1.webp",
       },
       {
         duration: "5 days & 4 nights",
-        rating: 4.7,
-        reviews: 56,
-        title: "Bali Party Pack | Beach Clubs & ATV Adventure",
-        route: "2D Kuta • 2D Seminyak • 1D Ubud",
+        rating: 4.8,
+        reviews: 19,
+        title: "Bali Crew Getaway | Surf, Party & Island Hopping",
+        route: "2D Kuta • 2D Gili • 1D Ubud",
         oldPrice: "INR 41,000",
-        price: "INR 31,500",
-        saveAmount: "INR 9,500",
-        image: "/Balli/bali_honeymoon1.jpeg",
+        price: "INR 31,800",
+        saveAmount: "INR 9,200",
+        image: "/Balli/balli_Page_image.jpg",
       },
       {
         duration: "7 days & 6 nights",
-        rating: 4.8,
-        reviews: 19,
-        title: "Friends Escape Bali | Rafting, Snorkel & Nightlife",
-        route: "3D Kuta • 2D Gili • 2D Ubud",
-        oldPrice: "INR 58,900",
-        price: "INR 44,800",
-        saveAmount: "INR 14,100",
-        image: "/Balli/bali_honeymoon2.jpeg",
+        rating: 4.7,
+        reviews: 25,
+        title: "Friends in Paradise | Bali Highlights Tour",
+        route: "3D Canggu • 2D Ubud • 2D Uluwatu",
+        oldPrice: "INR 58,000",
+        price: "INR 44,900",
+        saveAmount: "INR 13,100",
+        image: "/Balli/bali_honeymoon3.jpg",
       },
     ],
   },
   {
     id: "family",
     title: "Bali Family Packages",
-    heroSubtitle: "Family Packages",
-    heroTagline: "Kid-friendly resorts, culture & coast — holidays the whole family loves",
-    heroImage: "/Balli/main%20image.jpg",
     packages: [
       {
         duration: "7 days & 6 nights",
@@ -235,29 +224,24 @@ function PackageCard({ pkg, onViewMore }) {
   );
 }
 
+function splitCategoryTitle(title) {
+  if (title.startsWith("Bali ")) {
+    return { accent: "Bali", rest: title.slice(4) };
+  }
+  return { accent: title, rest: "" };
+}
+
 function CategorySection({ category, onViewMore }) {
+  const { accent, rest } = splitCategoryTitle(category.title);
+
   return (
     <section className={styles.categorySection} id={category.id} aria-labelledby={`${category.id}-heading`}>
-      <div className={styles.categoryHero}>
-        <img
-          src={category.heroImage}
-          alt=""
-          className={styles.categoryHeroBg}
-          loading="lazy"
-        />
-        <div className={styles.categoryHeroOverlay} />
-        <div className={styles.categoryHeroContent}>
-          <p className={styles.categoryHeroBrand}>Bali</p>
-          <h2 id={`${category.id}-heading`} className={styles.categoryHeroTitle}>
-            {category.heroSubtitle}
-          </h2>
-          <p className={styles.categoryHeroTagline}>{category.heroTagline}</p>
-        </div>
-      </div>
-
       <div className={styles.categoryBar}>
         <div className={styles.categoryBarInner}>
-          <p>{category.title}</p>
+          <h2 id={`${category.id}-heading`} className={styles.categoryBarTitle}>
+            <span className={styles.categoryBarTitleOrange}>{accent}</span>
+            {rest ? <span className={styles.categoryBarTitleGrey}>{rest}</span> : null}
+          </h2>
         </div>
       </div>
 

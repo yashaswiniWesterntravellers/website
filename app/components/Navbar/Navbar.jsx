@@ -73,8 +73,15 @@ export default function Navbar({ variant = "default" }) {
         setMenuOpen(true);
       }
     };
+    const onClose = () => {
+      setMenuOpen(false);
+    };
     window.addEventListener("wt-open-nav-menu", onOpen);
-    return () => window.removeEventListener("wt-open-nav-menu", onOpen);
+    window.addEventListener("wt-close-nav-menu", onClose);
+    return () => {
+      window.removeEventListener("wt-open-nav-menu", onOpen);
+      window.removeEventListener("wt-close-nav-menu", onClose);
+    };
   }, [openMenu]);
 
   useEffect(() => {

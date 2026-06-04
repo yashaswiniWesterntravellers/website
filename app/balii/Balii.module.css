@@ -14,7 +14,7 @@
 }
 
 .categorySection + .categorySection {
-  margin-top: 0;
+  margin-top: 4px;
 }
 
 /* Full-width page hero */
@@ -345,14 +345,28 @@
   margin: 0 auto;
 }
 
-.categoryBarInner p {
+.categoryBarTitle {
   margin: 0;
   flex: 1;
   min-width: 200px;
-  font-family: var(--font-sans), system-ui, sans-serif;
-  font-size: 1rem;
-  font-weight: 600;
-  color: #334155;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(1.35rem, 3vw, 2rem);
+  font-weight: 700;
+  font-style: italic;
+  letter-spacing: -0.02em;
+  line-height: 1.15;
+}
+
+.categoryBarTitleOrange {
+  background: var(--wt-gradient-fire);
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  filter: drop-shadow(0 2px 10px rgba(249, 115, 22, 0.22));
+}
+
+.categoryBarTitleGrey {
+  color: #64748b;
 }
 
 .changeStyleBtn {
@@ -618,17 +632,6 @@
     width: 100%;
     max-width: 320px;
     min-height: 48px;
-  }
-
-  .categoryHero {
-    min-height: 280px;
-    border-radius: 0 0 20px 20px;
-    overflow: hidden;
-  }
-
-  .categoryHeroContent {
-    margin-left: 16px;
-    max-width: calc(100% - 32px);
   }
 
   .categoryBar {

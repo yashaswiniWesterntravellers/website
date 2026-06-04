@@ -9,6 +9,10 @@ function openNavMenu(section) {
   );
 }
 
+function closeNavMenu() {
+  window.dispatchEvent(new CustomEvent("wt-close-nav-menu"));
+}
+
 export default function MobileBottomNav() {
   const pathname = usePathname();
   const router = useRouter();
@@ -36,9 +40,23 @@ export default function MobileBottomNav() {
     router.push(`/?menu=${section}`);
   };
 
+  const handleHome = () => {
+    closeNavMenu();
+    if (pathname === "/" && !menuParam && !packageParam) {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+      return;
+    }
+    router.push("/");
+  };
+
   return (
     <nav className="mobileBottomNav" aria-label="Mobile navigation">
-      <Link href="/" className={homeActive ? "navActive" : undefined} aria-current={homeActive ? "page" : undefined}>
+      <button
+        type="button"
+        className={`mobileNavTab${homeActive ? " navActive" : ""}`}
+        aria-current={homeActive ? "page" : undefined}
+        onClick={handleHome}
+      >
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" xmlns="http://www.w3.org/2000/svg">
           <path
             d="M3 9.5L12 3l9 6.5V20a1 1 0 01-1 1H4a1 1 0 01-1-1V9.5z"
@@ -48,7 +66,7 @@ export default function MobileBottomNav() {
           <path d="M9 21V12h6v9" strokeLinecap="round" strokeLinejoin="round" />
         </svg>
         Home
-      </Link>
+      </button>
       <button
         type="button"
         className={`mobileNavTab${domesticActive ? " navActive" : ""}`}
