@@ -22,8 +22,7 @@
 
 .heroWatermark,
 .heroMediaCaption,
-.heroInner,
-.heroStatsBar {
+.heroInner {
   display: none;
 }
 
@@ -997,12 +996,12 @@
   .heroKicker {
     display: inline-flex;
     align-items: center;
+    flex-wrap: wrap;
     gap: 8px;
-    margin: 0 0 10px;
+    margin: 0 0 12px;
     font-family: var(--font-sans), system-ui, sans-serif;
-    font-size: 0.62rem;
     font-weight: 700;
-    letter-spacing: 0.1em;
+    letter-spacing: 0.08em;
     text-transform: uppercase;
     color: var(--gold-light);
   }
@@ -1013,6 +1012,40 @@
     height: 2px;
     background: var(--wt-gradient-shine);
     border-radius: 999px;
+  }
+
+  .heroKickerBrand {
+    font-size: clamp(0.82rem, 3.6vw, 0.95rem);
+    letter-spacing: 0.12em;
+    color: #fff7ed;
+  }
+
+  .heroKickerRest {
+    font-size: 0.62rem;
+    letter-spacing: 0.1em;
+    color: var(--gold-light);
+  }
+
+  .heroInner .searchForm {
+    width: 100%;
+    max-width: 100%;
+    height: 56px;
+    margin: 0 0 14px;
+    padding: 0 6px 0 18px;
+    animation: none;
+  }
+
+  .heroInner .searchInput {
+    font-size: 16px;
+  }
+
+  .heroInner .searchBtn {
+    height: 44px;
+    padding: 0 16px;
+  }
+
+  .heroInner .searchBtnText {
+    display: inline;
   }
 
   .heroLead {
@@ -1081,8 +1114,7 @@
     gap: 10px;
   }
 
-  .heroBtnPrimary,
-  .heroBtnGhost {
+  .heroBtnPrimary {
     width: 100%;
     min-height: 48px;
     display: inline-flex;
@@ -1094,9 +1126,6 @@
     font-family: var(--font-sans), system-ui, sans-serif;
     font-size: 0.88rem;
     font-weight: 700;
-  }
-
-  .heroBtnPrimary {
     padding: 14px 26px;
     border: none;
     background: var(--wt-gradient-fire);
@@ -1104,56 +1133,35 @@
     box-shadow: 0 8px 24px rgba(249, 115, 22, 0.45);
   }
 
-  .heroBtnGhost {
-    padding: 13px 22px;
-    border: 2px solid rgba(255, 255, 255, 0.55);
-    color: #f8fafc;
-    font-weight: 600;
-  }
-
-  .heroStatsBar {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
+  .quoteBorder {
     position: relative;
-    z-index: 2;
+    bottom: auto;
+    left: auto;
+    right: auto;
+    z-index: 5;
     flex-shrink: 0;
     width: 100%;
-    background: linear-gradient(90deg, #c2410c 0%, #ea580c 40%, #f97316 100%);
-    border-top: 3px solid rgba(251, 191, 36, 0.6);
+    min-height: 48px;
+    padding: 10px 0;
+    border-radius: 0;
+    box-sizing: border-box;
   }
 
-  .heroStat {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 4px;
-    padding: 14px 6px;
-    text-align: center;
-    border-right: 1px solid rgba(255, 255, 255, 0.2);
+  .quoteMarqueeChunk {
+    font-size: 0.78rem;
   }
 
-  .heroStat:last-child {
-    border-right: none;
+  .quoteStatic {
+    display: none;
   }
 
-  .heroStatValue {
-    font-family: Georgia, "Times New Roman", serif;
-    font-size: 1.1rem;
-    font-weight: 700;
-    font-style: italic;
-    color: #ffffff;
-    line-height: 1.1;
+  .quoteMarqueeMask {
+    display: block;
   }
 
-  .heroStatLabel {
-    font-family: var(--font-sans), system-ui, sans-serif;
-    font-size: 0.58rem;
-    font-weight: 600;
-    letter-spacing: 0.05em;
-    text-transform: uppercase;
-    color: rgba(255, 247, 237, 0.9);
-    line-height: 1.25;
+  .quoteDecorLayer,
+  .quoteSplash {
+    display: none;
   }
 
   .heroDesktop {
