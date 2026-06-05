@@ -821,28 +821,28 @@
   }
 }
 
-/* Mobile home hero — image zone 380px tall (matches Bali) */
+/* Mobile home hero — full screen */
 @media (max-width: 767px) {
   .container {
-    --hero-mobile-image-zone: 380px;
     --hero-mobile-quote-h: 48px;
-    height: calc(var(--hero-mobile-image-zone) + var(--hero-mobile-quote-h));
-    min-height: unset;
-    max-height: none;
+    height: 100svh;
+    min-height: 100svh;
+    max-height: 100svh;
+    display: flex;
+    flex-direction: column;
     background: #0f172a;
-    border-radius: 0 0 20px 20px;
+    border-radius: 0;
     box-shadow: none;
     overflow: hidden;
   }
 
   .heroBg {
-    top: 0;
+    inset: 0;
     left: -14px;
     right: auto;
-    bottom: auto;
     width: calc(100% + 28px) !important;
-    height: var(--hero-mobile-image-zone) !important;
-    min-height: 380px;
+    height: 100% !important;
+    min-height: 100%;
     animation: none;
     transform: scale(1.04);
     object-position: center 38%;
@@ -850,13 +850,12 @@
 
   .overlay,
   .ambientGlow {
-    top: 0;
+    inset: 0;
     left: -14px;
     right: auto;
-    bottom: auto;
     width: calc(100% + 28px);
-    height: var(--hero-mobile-image-zone);
-    min-height: 380px;
+    height: 100%;
+    min-height: 100%;
   }
 
   .glowOrb1 {
@@ -879,11 +878,11 @@
   .heroLayout {
     position: relative;
     z-index: 3;
-    flex: none;
+    flex: 1;
     width: 100%;
-    height: var(--hero-mobile-image-zone);
-    min-height: var(--hero-mobile-image-zone);
-    max-height: var(--hero-mobile-image-zone);
+    height: auto;
+    min-height: 0;
+    max-height: none;
     padding: calc(52px + env(safe-area-inset-top, 0px)) 12px 10px;
     align-items: center;
     justify-content: center;
