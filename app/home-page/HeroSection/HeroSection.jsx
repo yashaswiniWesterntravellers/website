@@ -16,6 +16,12 @@ const HERO_QUICK_LINKS = [
   { label: "Visa-free", href: "/#destinations", icon: "✦" },
 ];
 
+const HOME_HERO_STATS = [
+  { value: "50+", label: "Destinations" },
+  { value: "24/7", label: "Travel support" },
+  { value: "Best", label: "Price deals" },
+];
+
 /* ── Destination strip icons ── */
 
 function StripIconShell({ children }) {
@@ -261,24 +267,79 @@ function HeroQuoteBorder() {
 export default function HeroSection() {
   return (
     <div className={styles.container}>
-      <Image
-        src={HERO_BACKGROUND}
-        alt=""
-        fill
-        priority
-        className={styles.heroBg}
-        sizes="100vw"
-      />
-
-      <div className={styles.overlay} aria-hidden="true" />
-      <div className={styles.ambientGlow} aria-hidden="true">
-        <span className={styles.glowOrb1} />
-        <span className={styles.glowOrb2} />
-        <span className={styles.glowOrb3} />
+      <div className={styles.heroMedia}>
+        <Image
+          src={HERO_BACKGROUND}
+          alt=""
+          fill
+          priority
+          className={styles.heroBg}
+          sizes="100vw"
+        />
+        <div className={styles.overlay} aria-hidden="true" />
+        <div className={styles.ambientGlow} aria-hidden="true">
+          <span className={styles.glowOrb1} />
+          <span className={styles.glowOrb2} />
+          <span className={styles.glowOrb3} />
+        </div>
+        <p className={styles.heroWatermark} aria-hidden="true">
+          WORLD
+        </p>
+        <div className={styles.heroMediaCaption} aria-hidden="true">
+          <span className={styles.heroDiscover}>Let&apos;s travel the</span>
+          <span className={styles.heroTitleLarge}>world</span>
+        </div>
       </div>
 
       <Navbar variant="overlay" />
 
+      <div className={styles.heroInner}>
+        <div className={styles.heroMain}>
+          <p className={styles.heroKicker}>
+            <span className={styles.heroKickerLine} aria-hidden="true" />
+            Western Travellers · Explore
+          </p>
+          <h1 className={styles.heroTitleMobile}>
+            <span className={styles.heroDiscover}>Let&apos;s travel the</span>
+            <span className={styles.heroTitleLarge}>world</span>
+          </h1>
+          <p className={styles.heroLead}>
+            <span className={styles.heroLeadAccent}>Your next adventure starts here</span>
+            <span className={styles.heroLeadRest}>
+              {" "}
+              — curated packages, visa-free gems &amp; unforgettable getaways.
+            </span>
+          </p>
+          <ul className={styles.heroSpots} aria-label="Popular destinations">
+            {HERO_QUICK_LINKS.map((link) => (
+              <li key={link.label}>
+                <Link href={link.href} className={styles.heroSpotChip}>
+                  {link.label}
+                </Link>
+              </li>
+            ))}
+          </ul>
+          <div className={styles.heroActions}>
+            <Link href="/#destinations" className={styles.heroBtnPrimary}>
+              Explore destinations
+            </Link>
+            <Link href="/balii" className={styles.heroBtnGhost}>
+              Bali packages
+            </Link>
+          </div>
+        </div>
+      </div>
+
+      <div className={styles.heroStatsBar} aria-label="Travel highlights">
+        {HOME_HERO_STATS.map((stat) => (
+          <div key={stat.label} className={styles.heroStat}>
+            <span className={styles.heroStatValue}>{stat.value}</span>
+            <span className={styles.heroStatLabel}>{stat.label}</span>
+          </div>
+        ))}
+      </div>
+
+      <div className={styles.heroDesktop}>
       <div className={styles.heroLayout}>
         <div className={styles.collageLeft}>
           <HeroDestinationStrip direction="up" />
@@ -340,6 +401,7 @@ export default function HeroSection() {
       </div>
 
       <HeroQuoteBorder />
+      </div>
     </div>
   );
 }
