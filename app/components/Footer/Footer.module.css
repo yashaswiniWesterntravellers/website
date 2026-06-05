@@ -190,113 +190,84 @@
   }
 }
 
-.footerMobile {
-  display: none;
-}
-
-.footerDesktop {
-  display: block;
-}
-
-.mobileBrand {
-  margin: 0 0 14px;
-  font-family: Georgia, "Times New Roman", serif;
-  font-size: 1.05rem;
-  font-weight: 700;
-  font-style: italic;
-  background: var(--wt-gradient-gold);
-  background-clip: text;
-  -webkit-background-clip: text;
-  color: transparent;
-  text-align: center;
-}
-
-.mobileNav {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 8px 16px;
-  margin-bottom: 16px;
-}
-
-.mobileNavLink {
-  color: #d4d4d4;
-  font-size: 0.82rem;
-  font-weight: 600;
-  text-decoration: none;
-}
-
-.mobileNavLink:hover {
-  color: #fff;
-}
-
-.mobileContact {
-  margin: 0 0 8px;
-  text-align: center;
-  font-size: 0.8rem;
-}
-
-.mobileContact a {
-  color: #a3a3a3;
-  text-decoration: none;
-}
-
-.mobileContact a:hover {
-  color: #fff;
-}
-
-.mobileCopy {
-  margin: 14px 0 0;
-  text-align: center;
-  font-size: 0.72rem;
-  color: #737373;
-}
-
-/* Mobile + tablet app shell (matches bottom nav breakpoint) */
+/* Mobile + tablet — full footer, centered text */
 @media (max-width: 1023px) {
   .footer {
     border-radius: 20px 20px 0 0;
     margin-top: 8px;
-    padding: 20px 16px calc(12px + var(--wt-safe-bottom));
+    padding-bottom: calc(8px + var(--wt-safe-bottom));
     text-align: center;
   }
 
-  .footerMobile {
-    display: flex;
+  .partners {
+    padding: 20px 16px 24px;
+    text-align: center;
+  }
+
+  .partnerRow {
+    justify-content: center;
+    gap: 14px 20px;
+  }
+
+  .linkBand {
+    padding: 20px 16px;
+    text-align: center;
+  }
+
+  .linkBandTitle {
+    text-align: center;
+  }
+
+  .linkList {
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    gap: 10px;
+  }
+
+  .linkList li {
+    display: block;
     width: 100%;
-    max-width: 100%;
-    margin: 0 auto;
     text-align: center;
   }
 
-  .footerDesktop {
-    display: none !important;
+  .linkList li:not(:last-child)::after {
+    content: none;
   }
 
-  .mobileBrand,
-  .mobileContact,
-  .mobileCopy {
-    width: 100%;
-    max-width: 320px;
-    margin-left: auto;
-    margin-right: auto;
+  .navGrid {
+    grid-template-columns: 1fr;
+    gap: 24px;
+    padding: 24px 16px;
     text-align: center;
   }
 
-  .mobileNav {
-    width: 100%;
-    max-width: 320px;
-    margin-left: auto;
-    margin-right: auto;
-    justify-content: center;
+  .navGrid > div {
+    display: flex;
+    flex-direction: column;
     align-items: center;
   }
 
-  .mobileNavLink {
-    display: inline-block;
+  .navColTitle {
+    text-align: center;
+  }
+
+  .navColList {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .navColList li {
+    text-align: center;
+  }
+
+  .contactLine {
+    text-align: center;
+  }
+
+  .copy {
+    padding: 16px 16px 24px;
     text-align: center;
   }
 }
