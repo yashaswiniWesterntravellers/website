@@ -123,12 +123,6 @@
   }
 }
 
-@media (max-width: 520px) {
-  .navGrid {
-    grid-template-columns: 1fr;
-  }
-}
-
 .navColTitle {
   margin: 0 0 14px;
   font-family: Georgia, "Times New Roman", serif;
@@ -236,8 +230,8 @@
   }
 
   .navGrid {
-    grid-template-columns: 1fr;
-    gap: 24px;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 20px 12px;
     padding: 24px 16px;
     text-align: center;
   }
@@ -246,6 +240,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    min-width: 0;
   }
 
   .navColTitle {
