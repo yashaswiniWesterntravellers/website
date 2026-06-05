@@ -17,13 +17,6 @@ const PAGE_HERO = {
   image: "/Balli/main%20image.jpg",
 };
 
-const HERO_HIGHLIGHTS = [
-  { icon: "🌾", label: "Ubud & rice terraces" },
-  { icon: "🛕", label: "Cliff temples & sunsets" },
-  { icon: "🏖️", label: "Seminyak & Kuta beaches" },
-  { icon: "⛵", label: "Nusa Penida day trips" },
-];
-
 const HERO_STATS = [
   { value: "50+", label: "Curated packages" },
   { value: "4.9★", label: "Traveller rated" },
@@ -337,19 +330,6 @@ function PageHero({ onExplore }) {
             </a>
           </div>
         </div>
-
-        <aside className={styles.pageHeroAside} aria-label="Bali highlights">
-          <ul className={styles.pageHeroHighlightList}>
-            {HERO_HIGHLIGHTS.map((item) => (
-              <li key={item.label} className={styles.pageHeroHighlightItem}>
-                <span className={styles.pageHeroHighlightIcon} aria-hidden="true">
-                  {item.icon}
-                </span>
-                <span className={styles.pageHeroHighlightLabel}>{item.label}</span>
-              </li>
-            ))}
-          </ul>
-        </aside>
       </div>
 
       <div className={styles.pageHeroStatsBar} aria-label="Bali travel highlights">

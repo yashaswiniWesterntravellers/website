@@ -27,11 +27,37 @@ const PARTNERS = [
   { name: "SunExpress" },
 ];
 
+const MOBILE_LINKS = [
+  { label: "Home", href: "/" },
+  { label: "About Us", href: "/about-us" },
+  { label: "Contact", href: "/contact" },
+  { label: "FAQ", href: "#" },
+];
+
 export default function Footer() {
   const year = new Date().getFullYear();
 
   return (
     <footer className={styles.footer}>
+      <div className={styles.footerMobile} aria-label="Footer">
+        <p className={styles.mobileBrand}>Western Travellers</p>
+        <nav className={styles.mobileNav}>
+          {MOBILE_LINKS.map((link) => (
+            <Link key={link.href} href={link.href} className={styles.mobileNavLink}>
+              {link.label}
+            </Link>
+          ))}
+        </nav>
+        <p className={styles.mobileContact}>
+          <a href="mailto:Info@westerntravellers.com">Info@westerntravellers.com</a>
+        </p>
+        <p className={styles.mobileContact}>
+          <a href="tel:+918050041118">+91-8050041118</a>
+        </p>
+        <p className={styles.mobileCopy}>Copyright © {year} Western Travellers</p>
+      </div>
+
+      <div className={styles.footerDesktop}>
       <section className={styles.partners} aria-labelledby="footer-partners-heading">
         <h2 id="footer-partners-heading" className={styles.partnersTitle}>
           Partnered with the best in the industry
@@ -100,6 +126,7 @@ export default function Footer() {
 
       <hr className={styles.rule} />
       <p className={styles.copy}>Copyright © {year} Western Travellers. All rights reserved.</p>
+      </div>
     </footer>
   );
 }

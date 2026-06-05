@@ -190,40 +190,113 @@
   }
 }
 
-@media (max-width: 767px) {
+.footerMobile {
+  display: none;
+}
+
+.footerDesktop {
+  display: block;
+}
+
+.mobileBrand {
+  margin: 0 0 14px;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 1.05rem;
+  font-weight: 700;
+  font-style: italic;
+  background: var(--wt-gradient-gold);
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  text-align: center;
+}
+
+.mobileNav {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 8px 16px;
+  margin-bottom: 16px;
+}
+
+.mobileNavLink {
+  color: #d4d4d4;
+  font-size: 0.82rem;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.mobileNavLink:hover {
+  color: #fff;
+}
+
+.mobileContact {
+  margin: 0 0 8px;
+  text-align: center;
+  font-size: 0.8rem;
+}
+
+.mobileContact a {
+  color: #a3a3a3;
+  text-decoration: none;
+}
+
+.mobileContact a:hover {
+  color: #fff;
+}
+
+.mobileCopy {
+  margin: 14px 0 0;
+  text-align: center;
+  font-size: 0.72rem;
+  color: #737373;
+}
+
+/* Mobile + tablet app shell (matches bottom nav breakpoint) */
+@media (max-width: 1023px) {
   .footer {
     border-radius: 20px 20px 0 0;
     margin-top: 8px;
+    padding: 20px 16px calc(12px + var(--wt-safe-bottom));
+    text-align: center;
   }
 
-  .inner {
-    padding: 0 16px 20px;
+  .footerMobile {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    max-width: 100%;
+    margin: 0 auto;
+    text-align: center;
   }
 
-  .partners {
-    padding: 20px 16px 24px;
+  .footerDesktop {
+    display: none !important;
   }
 
-  .partnerRow {
-    gap: 16px;
+  .mobileBrand,
+  .mobileContact,
+  .mobileCopy {
+    width: 100%;
+    max-width: 320px;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
   }
 
-  .navGrid {
-    grid-template-columns: 1fr 1fr;
-    gap: 20px 12px;
-    padding: 20px 16px;
+  .mobileNav {
+    width: 100%;
+    max-width: 320px;
+    margin-left: auto;
+    margin-right: auto;
+    justify-content: center;
+    align-items: center;
   }
 
-  .navColTitle {
-    font-size: 0.8rem;
-  }
-
-  .navColList a {
-    font-size: 0.8rem;
-  }
-
-  .copy {
-    padding: 16px 16px 24px;
-    font-size: 0.75rem;
+  .mobileNavLink {
+    display: inline-block;
+    text-align: center;
   }
 }
